@@ -1,0 +1,56 @@
+.loginCard{
+    width: 40%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    margin: 70px auto;
+}
+
+mat-card{
+    border: #fff !important;
+    margin: 0px !important;
+    box-shadow: none !important;
+}
+
+.header{
+    text-align: center;
+}
+.headerContent{
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.headerContent span:nth-child(10n + 1) {
+    color: blue;
+}
+  
+.headerContent span:nth-child(10n + 2) {
+    color: red;
+}
+  
+.headerContent span:nth-child(10n + 3){
+    color: yellow;
+}
+  
+.headerContent span:nth-child(10n + 5){
+    color: blue;
+}
+  
+.headerContent span:nth-child(10n + 4) {
+    color: green;
+}
+  
+.headerContent span:nth-child(10n + 6){
+    color: red;
+}
+
+a{
+    color: blue;
+}
+
+.buttonContent{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+}
+
