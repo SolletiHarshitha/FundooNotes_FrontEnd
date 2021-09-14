@@ -1,0 +1,91 @@
+.registerCard{
+    width: fit-content;
+    margin-left:auto;
+    margin-right:auto;  
+    margin-top: 50px;
+    border: 1px solid gray;
+    line-height: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerContent{
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.headerContent span:nth-child(10n + 1) {
+    color: blue;
+}
+  
+.headerContent span:nth-child(10n + 2) {
+    color: red;
+}
+  
+.headerContent span:nth-child(10n + 3){
+    color: yellow;
+}
+  
+.headerContent span:nth-child(10n + 5){
+    color: blue;
+}
+  
+.headerContent span:nth-child(10n + 4) {
+    color: green;
+}
+  
+.headerContent span:nth-child(10n + 6){
+    color: red;
+}
+
+mat-card-subtitle{
+    font-size: 20px;
+    color: black;
+}
+
+input, button {
+    color: #202124;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+}
+
+.rowContent{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+mat-form-field{
+    padding-left: 2%;
+}
+.userName mat-form-field{
+    min-width: 100%;
+}
+.passwordHint{
+    font-size: 11px;
+    margin-top: -20px;
+    margin-left: 15px;
+}
+
+.buttonContent{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 2%;
+}
+mat-button{
+    padding-left: 50px;
+}
+.imageContent{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin: 20px;
+    justify-content: center;
+}
+mat-card{
+    border: #fff !important;
+    margin: 0px !important;
+    box-shadow: none !important;
+}
