@@ -1,12 +1,10 @@
-.registerCard{
+.mainContent{
     width: fit-content;
-    margin-left:auto;
-    margin-right:auto;  
-    margin-top: 50px;
     border: 1px solid gray;
     line-height: 40px;
     display: flex;
-    flex-direction: row;
+    margin: 30px auto;
+    padding: 40px;
 }
 
 .headerContent{
@@ -14,78 +12,111 @@
     font-family: sans-serif;
 }
 
-.headerContent span:nth-child(10n + 1) {
-    color: blue;
+@mixin Color($color){
+    color: $color;
+}
+
+.headerContent span:nth-child(1),
+.headerContent span:nth-child(4) {
+    @include Color(blue)
 }
   
-.headerContent span:nth-child(10n + 2) {
-    color: red;
+.headerContent span:nth-child(2),
+.headerContent span:nth-child(6) {
+    @include Color(red)
 }
   
-.headerContent span:nth-child(10n + 3){
-    color: yellow;
+.headerContent span:nth-child(3){
+    @include Color(yellow)
 }
-  
-.headerContent span:nth-child(10n + 5){
-    color: blue;
-}
-  
-.headerContent span:nth-child(10n + 4) {
-    color: green;
-}
-  
-.headerContent span:nth-child(10n + 6){
-    color: red;
+
+.headerContent span:nth-child(5) {
+    @include Color(green)
 }
 
 mat-card-subtitle{
     font-size: 20px;
     color: black;
+    line-height: 5px;
+    span{
+        color: gray;
+        font-size: 15px;
+        text-align: left;
+    }
 }
 
 input, button {
     color: #202124;
-    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    font-family: sans-serif;
 }
 
 .rowContent{
-    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
 }
 
 mat-form-field{
-    padding-left: 2%;
+    padding-right: 2%;
 }
 .userName mat-form-field{
-    min-width: 100%;
+    min-width: 410px;
 }
 .passwordHint{
     font-size: 11px;
-    margin-top: -20px;
-    margin-left: 15px;
+    margin-top: -30px;
+    margin-left: 10px;
 }
 
 .buttonContent{
     display: flex;
     justify-content: space-between;
     flex-flow: row;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    padding: 2%;
+    margin: 30px 0px;
+    mat-button{
+        padding-left: 50px;
+    }
 }
-mat-button{
-    padding-left: 50px;
-}
-.imageContent{
+
+.rightContent{
     display: flex;
     flex-direction: column;
     align-items:center;
     margin: 20px;
-    justify-content: center;
+    justify-content: initial;
+    padding: 20px;
+    text-align: center;
+    img{
+        width:250px;
+    }
+    p{
+        line-height: normal;
+        font-size: 15px;
+    }
 }
-mat-card{
-    border: #fff !important;
-    margin: 0px !important;
-    box-shadow: none !important;
+
+@media screen and (max-width:600px) {
+    .mainContent{
+        padding: 40px;
+    }
+    .rowContent{
+        display: flex;
+        flex-direction: column;
+    }
+    .rightContent{
+        display: none;
+    }
+    .userName mat-form-field{
+        min-width: 95%;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .mainContent{
+        padding: 40px;
+        width: fit-content;
+    }
+    
+    .rightContent{
+        display: none;
+    }
 }

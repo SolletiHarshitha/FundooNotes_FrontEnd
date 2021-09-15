@@ -1,5 +1,5 @@
 <div class="registerCard">
-    <mat-card class="maincontent">
+    <mat-card class="mainContent">
         <div class="leftContent">
             <mat-card-title class="headerContent">
                 <span>F</span>
@@ -9,53 +9,66 @@
                 <span>o</span>
                 <span>o</span>
             </mat-card-title>
-            <mat-card-subtitle>Create your Fundoo Account</mat-card-subtitle>
-            <form class="formContent">
+            <mat-card-subtitle>
+                <h1>Create your Fundoo Account</h1>
+                <span>to continue to Fundoo Notes</span>
+            </mat-card-subtitle>
+            <form [formGroup]="RegisterForm">
                 <div class="rowContent">
-                    <mat-form-field appearance="outline" hideRequiredMarker>
+                    <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
-                        <input matInput required>
+                        <input matInput type="text" formControlName="firstName">
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'firstName')">FirstName is required</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'firstName')">Name should start with caps</mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="outline" hideRequiredMarker>
+                    <mat-form-field appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input matInput required>
+                        <input matInput type="text" formControllName="lastName">
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'lastName')">LastName is required</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'lastName')">Name should start with caps</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="userName rowContent">
-                    <mat-form-field appearance="outline" hideRequiredMarker>
+                    <mat-form-field appearance="outline">
                         <mat-label>UserName</mat-label>
-                        <input matInput required>
+                        <input matInput formControlName="userName">
                         <mat-hint>You can use letters, numbers & periods</mat-hint>
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'userName')">Email is required</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'userName')">Invalid Email</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="rowContent">
-                    <mat-form-field appearance="outline" hideRequiredMarker>
+                    <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput required type="password">
+                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'password')">Password is required</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'password')">Choose a stronger password with mix of letters, numbers and symbols</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('minLength', 'password')">Use 8 characters or more fore your password</mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="outline" hideRequiredMarker>
+                    <mat-form-field appearance="outline">
                         <mat-label>Confirm</mat-label>
-                        <input matInput required type="password">
+                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'cpassword')">Confirm your password</mat-error>
+                        <mat-error *ngIf="RegisterForm.get('cpassword')!= RegisterForm.get('password')">Those passwords didn't match.Try again</mat-error>
                     </mat-form-field> 
-                   
                 </div>
-                <div>
+                <!--<div>-->
                     <div class="passwordHint">
                         <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
                     </div>
-                    <mat-checkbox>Show Password</mat-checkbox>
-                </div>
+                    <div>
+                        <mat-checkbox (change)= 'hide = !hide'>Show Password</mat-checkbox>
+                    </div>
+                <!--</div>-->
                 <div class="buttonContent">
-                    <a mat-button href="/login">Sign in instead</a>
-                    <button mat-flat-button color="primary">Register</button>
+                    <a mat-button color="primary" href="/login">Sign in instead</a>
+                    <button mat-flat-button color="primary" click = 'Register()'>Register</button>
                 </div> 
             </form>
         </div>
-    
-    </mat-card>
-        <div class="imageContent" >
+        <div class="rightContent" >
             <img src="../assets/register_img.svg" alt="">
-            <p>One Account.To Create Notes</p>
+            <p>One Account. Create and Save your Notes.</p>
         </div>
-    
+    </mat-card> 
 </div>
