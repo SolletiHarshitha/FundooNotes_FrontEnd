@@ -70,7 +70,7 @@ mat-form-field{
 .buttonContent{
     display: flex;
     justify-content: space-between;
-    flex-flow: row;
+    flex-direction: row;
     margin: 30px 0px;
     mat-button{
         padding-left: 50px;
