@@ -1,56 +1,69 @@
-.loginCard{
+@mixin Display{
+    display: flex;
+    flex-direction: column;
+}
+.cardContent{
     width: 40%;
     border: 1px solid gray;
-    display: flex;
-    justify-content: center;
-    margin: 70px auto;
+    line-height: 40px;
+    margin: 20px auto;
+    padding: 30px;
+    .header{
+        //display: flex;
+        align-items: center;
+        @include Display;
+        //flex-direction: column;
+    }
 }
 
-mat-card{
-    border: #fff !important;
-    margin: 0px !important;
-    box-shadow: none !important;
-}
-
-.header{
-    text-align: center;
-}
 .headerContent{
     font-size: 30px;
     font-family: sans-serif;
 }
 
-.headerContent span:nth-child(10n + 1) {
-    color: blue;
-}
-  
-.headerContent span:nth-child(10n + 2) {
-    color: red;
-}
-  
-.headerContent span:nth-child(10n + 3){
-    color: yellow;
-}
-  
-.headerContent span:nth-child(10n + 5){
-    color: blue;
-}
-  
-.headerContent span:nth-child(10n + 4) {
-    color: green;
-}
-  
-.headerContent span:nth-child(10n + 6){
-    color: red;
+@mixin Color($color){
+    color: $color;
 }
 
-a{
-    color: blue;
+.headerContent span:nth-child(1),
+.headerContent span:nth-child(4) {
+    @include Color(blue)
+}
+  
+.headerContent span:nth-child(2),
+.headerContent span:nth-child(6) {
+    @include Color(red)
+}
+  
+.headerContent span:nth-child(3){
+    @include Color(yellow)
+}
+
+.headerContent span:nth-child(5) {
+    @include Color(green)
+}
+
+mat-card-subtitle{
+    @include Color(black)
+}
+.rowContent{
+    @include Display;
+}
+.password{
+    a{
+        text-decoration: none;
+        color: blue;
+        font-size: 15px;
+        font-family: sans-serif;
+    }  
 }
 
 .buttonContent{
     display: flex;
     justify-content: space-between;
     flex-flow: row;
+    margin: 30px 0;
+    a{
+        padding: 0;
+    }
 }
-

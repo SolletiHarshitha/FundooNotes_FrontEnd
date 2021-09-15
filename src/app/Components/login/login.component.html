@@ -1,5 +1,5 @@
 <div class="loginCard">
-    <mat-card>
+    <mat-card class="cardContent">
         <div class="mainContent">
             <div class="header">
                 <mat-card-title class="headerContent">
@@ -10,31 +10,34 @@
                     <span>o</span>
                     <span>o</span>
                 </mat-card-title>
-                <h2>Sign In</h2>
-                <h4>Use your Fundoo Account</h4>
+                <mat-card-subtitle>
+                    <h2>Sign In</h2>
+                    <h4>Use your Fundoo Account</h4>
+                </mat-card-subtitle>  
             </div>
-            <div class="rowContent">
-                <mat-form-field appearance="outline" hideRequiredMarker>
-                    <mat-label>Email</mat-label>
-                    <input matInput required>
-                </mat-form-field>
-            </div>
-            <form>
+            <form [formGroup]="LoginForm" class="formContent">
                 <div class="rowContent">
-                    <mat-form-field appearance="outline" hideRequiredMarker>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" formControlName="email">
+                        <mat-error *ngIf="LoginForm.hasError('required', 'email')">Email is required</mat-error>
+                        <mat-error *ngIf="LoginForm.hasError('pattern', 'email')">Invalid Email</mat-error>
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput required type="password">
+                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-checkbox>Show Password</mat-checkbox>  
+                    <mat-checkbox (change)= 'hide = !hide'>Show Password</mat-checkbox>
                 </div>
-                <div>
-                    <a mat-flat-button href="" target="_blank">Forgot password?</a>
+                <div class="password">
+                    <a href="/forgotPassword">Forgot password?</a>
                 </div>
                 <div class="buttonContent">
-                    <a mat-flat-button href="/register">Create account</a>
-                    <button mat-flat-button color="primary">Next</button>
+                    <a mat-button color="primary" href="/login">Create account</a>
+                    <button mat-flat-button color="primary" click = 'Login()'>Next</button>
                 </div>
             </form>  
         </div>
