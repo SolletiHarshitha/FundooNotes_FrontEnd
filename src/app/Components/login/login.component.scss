@@ -4,7 +4,7 @@
 }
 
 .cardContent{
-    width: 40%;
+    width: 30%;
     border: 1px solid gray;
     line-height: 40px;
     margin: 20px auto;
@@ -18,6 +18,11 @@
 .headerContent{
     font-size: 30px;
     font-family: sans-serif;
+}
+mat-card-subtitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @mixin Color($color){

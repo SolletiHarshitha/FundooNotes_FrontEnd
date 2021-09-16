@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -17,9 +17,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService : UserServiceService,
     public snackBar : MatSnackBar,
-    private router : Router ) { 
-
-  }
+    private router : Router) { }
 
   ngOnInit(): void {
     this.RegisterForm = new FormGroup({
@@ -32,12 +30,20 @@ export class RegisterComponent implements OnInit {
   }
   
   Register(){
-    //console.log("Register method working");
     this.userService.Register(this.RegisterForm.value)
     .subscribe((result: any) => {
       console.log(result);
-      
+      this.openSnackBar(result.message, '');
+      if(result.status == true)
+      {
+        this.router.navigateByUrl('/login');
+      }
     });
   }
   
+  openSnackBar(message: string, action: string){
+    this.snackBar.open(message, action, {
+      duration: 5000
+    })
+  }
 }

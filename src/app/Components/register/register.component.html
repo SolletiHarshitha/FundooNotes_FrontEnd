@@ -52,9 +52,8 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Confirm</mat-label>
                         <input matInput formControlName="cpassword" [type]="hide ? 'password' : 'text'">
-                        <mat-error *ngIf="RegisterForm.hasError('passwordValidation')"></mat-error>
-                        <mat-error *ngIf="RegisterForm.hasError('required', 'cpassword')">Confirm your password</mat-error>
-                        <mat-error *ngIf="RegisterForm.get('cpassword')!= RegisterForm.get('password')">Those passwords didn't match.Try again</mat-error>
+                        <!--<mat-error *ngIf="RegisterForm.hasError('required', 'cpassword')">Confirm your password</mat-error>
+                        <mat-error *ngIf="RegisterForm.get('cpassword')!= RegisterForm.get('password')">Those passwords didn't match.Try again</mat-error>-->
                     </mat-form-field> 
                 </div>
                 <div class="passwordHint">
@@ -64,7 +63,7 @@
                     <mat-checkbox (change)= 'hide = !hide'>Show Password</mat-checkbox>
                 </div>
                 <div class="buttonContent">
-                    <a mat-button href="/login">Sign in instead</a>
+                    <a mat-button color="primary" href="/login">Sign in instead</a>
                     <button mat-flat-button color="primary" (click) = 'Register()'>Register</button>
                 </div> 
             </form>
