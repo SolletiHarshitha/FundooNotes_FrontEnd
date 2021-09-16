@@ -15,26 +15,30 @@
             </mat-card-subtitle>
             <form [formGroup]="RegisterForm">
                 <div class="rowContent">
+                    
                     <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
                         <input matInput type="text" formControlName="firstName">
                         <mat-error *ngIf="RegisterForm.hasError('required', 'firstName')">FirstName is required</mat-error>
                         <mat-error *ngIf="RegisterForm.hasError('pattern', 'firstName')">Name should start with caps</mat-error>
                     </mat-form-field>
+                
+               
                     <mat-form-field appearance="outline">
                         <mat-label>Last Name</mat-label>
                         <input matInput type="text" formControllName="lastName">
                         <mat-error *ngIf="RegisterForm.hasError('required', 'lastName')">LastName is required</mat-error>
                         <mat-error *ngIf="RegisterForm.hasError('pattern', 'lastName')">Name should start with caps</mat-error>
                     </mat-form-field>
+                
                 </div>
                 <div class="userName rowContent">
                     <mat-form-field appearance="outline">
                         <mat-label>UserName</mat-label>
-                        <input matInput formControlName="userName">
+                        <input matInput formControlName="email">
                         <mat-hint>You can use letters, numbers & periods</mat-hint>
-                        <mat-error *ngIf="RegisterForm.hasError('required', 'userName')">Email is required</mat-error>
-                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'userName')">Invalid Email</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'email')">Email is required</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('email', 'email')">Invalid Email</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="rowContent">
@@ -47,22 +51,21 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Confirm</mat-label>
-                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                        <input matInput formControlName="cpassword" [type]="hide ? 'password' : 'text'">
+                        <mat-error *ngIf="RegisterForm.hasError('passwordValidation')"></mat-error>
                         <mat-error *ngIf="RegisterForm.hasError('required', 'cpassword')">Confirm your password</mat-error>
                         <mat-error *ngIf="RegisterForm.get('cpassword')!= RegisterForm.get('password')">Those passwords didn't match.Try again</mat-error>
                     </mat-form-field> 
                 </div>
-                <!--<div>-->
-                    <div class="passwordHint">
-                        <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
-                    </div>
-                    <div>
-                        <mat-checkbox (change)= 'hide = !hide'>Show Password</mat-checkbox>
-                    </div>
-                <!--</div>-->
+                <div class="passwordHint">
+                    <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+                </div>
+                <div>
+                    <mat-checkbox (change)= 'hide = !hide'>Show Password</mat-checkbox>
+                </div>
                 <div class="buttonContent">
-                    <a mat-button color="primary" href="/login">Sign in instead</a>
-                    <button mat-flat-button color="primary" click = 'Register()'>Register</button>
+                    <a mat-button href="/login">Sign in instead</a>
+                    <button mat-flat-button color="primary" (click) = 'Register()'>Register</button>
                 </div> 
             </form>
         </div>
