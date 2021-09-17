@@ -26,4 +26,9 @@ export class UserServiceService {
     }
     return this.httpService.post(`${environment.baseUrl}/api/User/login`,params);
   }
+
+  ForgotPassword(data: any){
+    const email = data.email
+    return this.httpService.post(`${environment.baseUrl}/api/User/ForgotPassword`, email);
+  }
 }
