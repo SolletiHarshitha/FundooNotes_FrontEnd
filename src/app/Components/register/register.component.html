@@ -26,7 +26,7 @@
                
                     <mat-form-field appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input matInput type="text" formControllName="lastName">
+                        <input matInput type="text" formControlName="lastName">
                         <mat-error *ngIf="RegisterForm.hasError('required', 'lastName')">LastName is required</mat-error>
                         <mat-error *ngIf="RegisterForm.hasError('pattern', 'lastName')">Name should start with caps</mat-error>
                     </mat-form-field>
