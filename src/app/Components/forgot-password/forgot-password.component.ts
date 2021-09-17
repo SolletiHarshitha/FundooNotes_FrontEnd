@@ -31,10 +31,10 @@ export class ForgotPasswordComponent implements OnInit {
       this.openSnackBar(result.message, '');
       if(result.status == true){
         const params =  {
-          Email: result.data.email,
+          Email: result.data,
           Token: result.resultMessage
         }
-        localStorage.setItem('FundooUser', JSON.stringify(params));
+        localStorage.setItem('FundooForgot', JSON.stringify(params));
       }
     }, (error: HttpErrorResponse) => {
       if(!error.error.status){

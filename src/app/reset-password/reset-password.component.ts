@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +16,8 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(
     private userService: UserServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -27,16 +29,22 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ResetPassword(){
+    var data = localStorage.getItem('FundooForgot');
+    if(data != null){
     this.userService.ResetPassword(this.ResetPasswordForm.value)
     .subscribe((result : any)=>
     {
       console.log(result);
       this.openSnackBar(result.message, '');
+      if(result.status == true){
+        this.router.navigateByUrl('/login');
+      }
     }, (error: HttpErrorResponse) => {
       if(!error.error.status){
         this.openSnackBar(error.error.message,'');
       }
     })
+  }
   }
 
   openSnackBar(message: string, action: string){
