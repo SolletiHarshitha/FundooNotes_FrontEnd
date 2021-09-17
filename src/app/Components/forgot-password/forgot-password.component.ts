@@ -29,6 +29,13 @@ export class ForgotPasswordComponent implements OnInit {
     {
       console.log(result);
       this.openSnackBar(result.message, '');
+      if(result.status == true){
+        const params =  {
+          Email: result.data.email,
+          Token: result.resultMessage
+        }
+        localStorage.setItem('FundooUser', JSON.stringify(params));
+      }
     }, (error: HttpErrorResponse) => {
       if(!error.error.status){
         this.openSnackBar(error.error.message,'');
