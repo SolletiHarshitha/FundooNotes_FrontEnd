@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
@@ -31,6 +32,10 @@ export class ResetPasswordComponent implements OnInit {
     {
       console.log(result);
       this.openSnackBar(result.message, '');
+    }, (error: HttpErrorResponse) => {
+      if(!error.error.status){
+        this.openSnackBar(error.error.message,'');
+      }
     })
   }
 

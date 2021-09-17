@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -37,6 +38,10 @@ export class RegisterComponent implements OnInit {
       if(result.status == true)
       {
         this.router.navigateByUrl('/login');
+      }
+    }, (error: HttpErrorResponse) => {
+      if(!error.error.status){
+        this.openSnackBar(error.error.message,'');
       }
     });
   }

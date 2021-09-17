@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    
   ) { }
 
   ngOnInit(): void {
@@ -29,8 +31,13 @@ export class LoginComponent implements OnInit {
     {
       console.log(result);
       this.openSnackBar(result.message, '');
+    }, (error: HttpErrorResponse) => {
+      if(!error.error.status){
+        this.openSnackBar(error.error.message,'');
+      }
     })
   }
+
 
   openSnackBar(message: string, action: string){
     this.snackBar.open(message, action, {
