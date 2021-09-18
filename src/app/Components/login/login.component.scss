@@ -1,0 +1,86 @@
+@mixin Display{
+    display: flex;
+    flex-direction: column;
+}
+
+.cardContent{
+    width: 410px;
+    border: 1px solid gray;
+    line-height: 40px;
+    margin: 20px auto;
+    padding: 30px;
+    .header{
+        align-items: center;
+        @include Display;
+    }
+}
+
+.headerContent{
+    font-size: 30px;
+    font-family: sans-serif;
+}
+mat-card-subtitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin Color($color){
+    color: $color;
+}
+
+.headerContent span:nth-child(1),
+.headerContent span:nth-child(4) {
+    @include Color(blue)
+}
+  
+.headerContent span:nth-child(2),
+.headerContent span:nth-child(6) {
+    @include Color(red)
+}
+  
+.headerContent span:nth-child(3){
+    @include Color(yellow)
+}
+
+.headerContent span:nth-child(5) {
+    @include Color(green)
+}
+
+mat-card-subtitle{
+    @include Color(black)
+}
+
+.rowContent{
+    @include Display;
+}
+
+.password{
+    a{
+        text-decoration: none;
+        color: blue;
+        font-size: 15px;
+        font-family: sans-serif;
+    }  
+}
+
+.buttonContent{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    margin: 30px 0;
+    a{
+        padding: 0;
+    }
+}
+@media screen and (max-width: 600px){
+    .cardContent{
+        width: 100%;
+        margin-top: 0;
+        align-items: center;
+    }
+   
+    .buttonContent{
+        flex-flow: column;
+    }
+}
