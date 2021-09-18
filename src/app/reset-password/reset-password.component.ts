@@ -35,21 +35,19 @@ export class ResetPasswordComponent implements OnInit {
     .subscribe((result : any)=>
     {
       console.log(result);
-      this.openSnackBar(result.message, '');
+      this.snackBar.open(`${result.message}`, '', {
+        duration:5000
+      });
       if(result.status == true){
         this.router.navigateByUrl('/login');
       }
     }, (error: HttpErrorResponse) => {
       if(!error.error.status){
-        this.openSnackBar(error.error.message,'');
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration:5000
+        });
       }
     })
   }
-  }
-
-  openSnackBar(message: string, action: string){
-    this.snackBar.open(message, action, {
-      duration: 5000
-    });
   }
 }

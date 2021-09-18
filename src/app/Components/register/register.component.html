@@ -47,9 +47,9 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Confirm</mat-label>
-                        <input matInput formControlName="cpassword" [type]="hide ? 'password' : 'text'">
-                        <!--<mat-error *ngIf="RegisterForm.hasError('required', 'cpassword')">Confirm your password</mat-error>
-                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'cpassword')">Those passwords didn't match.Try again</mat-error>-->
+                        <input matInput formControlName="cpassword" [type]="hide ? 'password' : 'text'" pattern="{{this.RegisterForm.value.password}}">
+                        <mat-error *ngIf="RegisterForm.hasError('required', 'cpassword')">Confirm your password</mat-error>
+                        <mat-error *ngIf="RegisterForm.hasError('pattern', 'cpassword')">Those passwords didn't match.Try again</mat-error>
                     </mat-form-field> 
                 </div>
                 <div class="passwordHint">

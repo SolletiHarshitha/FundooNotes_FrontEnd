@@ -12,7 +12,7 @@ const routes: Routes = [
   { path : 'register', component:RegisterComponent},
   { path : 'login', component:LoginComponent},
   { path : 'forgotPassword', component:ForgotPasswordComponent},
-  { path : `resetPassword/${token}`, component:ResetPasswordComponent}
+  { path : `resetPassword`, component:ResetPasswordComponent}
 ];
 
 @NgModule({
