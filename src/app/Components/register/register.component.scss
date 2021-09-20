@@ -3,9 +3,12 @@
     border: 1px solid gray;
     line-height: 40px;
     display: flex;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 40px;
-    overflow-y: hidden;
+}
+
+.registerCard{
+    overflow: hidden !important;
 }
 
 .headerContent{

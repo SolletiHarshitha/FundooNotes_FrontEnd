@@ -22,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.ResetPasswordForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+     // email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       cpassword: new FormControl('', [Validators.required])
     });
@@ -30,8 +30,9 @@ export class ResetPasswordComponent implements OnInit {
 
   ResetPassword(){
     var data = localStorage.getItem('FundooForgot');
+    var email = JSON.parse(data!).Email;
     if(data != null){
-    this.userService.ResetPassword(this.ResetPasswordForm.value)
+    this.userService.ResetPassword(email, this.ResetPasswordForm.value)
     .subscribe((result : any)=>
     {
       console.log(result);

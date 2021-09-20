@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
 }
-
+.loginCard{
+    overflow: hidden !important;
+}
 .cardContent{
     width: 410px;
     border: 1px solid gray;

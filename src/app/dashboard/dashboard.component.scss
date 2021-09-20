@@ -1,0 +1,64 @@
+.ToolBar{
+    box-sizing: border-box;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    .header{
+      margin: 0 20px;
+    }
+}
+.dashboard{
+  overflow: hidden !important;
+}
+.searchField{
+  margin: 0 30px;
+  width: 510px;
+  align-items: center;
+ // background-color: white;
+  margin: 0 30px;
+  input{
+  font-size: 15px;
+  font-family: sans-serif;
+  }
+}
+.sideContainer {
+    height: 100ex;
+    border: 0px solid #fff;
+}
+
+.sideNav
+{
+  padding: 10px 0px 10px 0px;
+  mat-icon
+  {
+    margin-left: 5px;
+    margin-right: 2ex;
+  }
+  .navLabel
+  {
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25rem;
+    margin-top: 6px;
+  }
+}
+
+.toolbar-icon{
+  margin: 0 5px;
+}
+
+.rightContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30px;
+  .toolbar-icon{
+    margin-left: 20px;
+  }
+  mat-menu{
+    display: flex;
+    justify-content: center;
+  }
+}

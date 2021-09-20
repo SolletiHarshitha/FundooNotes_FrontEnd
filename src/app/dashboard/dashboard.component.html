@@ -1,0 +1,72 @@
+<div class="dashboard">
+    <div class="ToolBar">
+        <mat-toolbar>
+            <button mat-icon-button class="toolbar-icon" aria-label="menu icon" (click)="expand=!expand">
+                <mat-icon>menu</mat-icon>
+           </button>
+           <img src="../assets/keep_pic.png">
+           <mat-card-title class="header">
+                <span>Fundoo</span>
+            </mat-card-title>
+            <div class="searchBar">
+              <mat-form-field appearance="outline" class="searchField">
+                <button mat-icon-button class="toolbar-icon" aria-label="search icon">
+                  <mat-icon matPrefix>search</mat-icon>
+                </button>
+                <input matInput type="text" placeholder="Search">
+              </mat-form-field>
+            </div>
+            <div class="rightContainer">
+              <div>
+                <button mat-icon-button class="toolbar-icon" aria-label="list icon" (click)="view=!view">
+                  <mat-icon *ngIf=view>view_list</mat-icon>
+                  <mat-icon *ngIf=!view>grid_view</mat-icon>
+              </button>
+              </div>
+              <div class="account">
+                <button mat-icon-button class="toolbar-icon" aria-label="account_circle icon" [matMenuTriggerFor]="menu">
+                  <mat-icon>account_circle</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <div>
+                    <p>{{ name }}</p>
+                    <p>{{ email }}</p>
+                  </div>
+                  <button mat-stroked-button (click)="LogOut()">Log Out</button>
+                </mat-menu> 
+              </div>
+            </div>
+        </mat-toolbar>
+    </div>
+    <div class="navigationContainer">
+        <mat-sidenav-container class="sideContainer">
+            <mat-sidenav #drawer mode="side" opened="true" autosize>
+              <mat-nav-list class="sideNav" (mouseover)="expand=true" (mouseleave)="expand=false">
+                <mat-list-item>
+                    <mat-icon class="navigate-icon">lightbulb_outline</mat-icon>
+                    <span *ngIf="expand">Notes</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon class="navigate-icon">notifications_none</mat-icon>
+                    <span *ngIf="expand">Reminders</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon class="navigate-icon">edit</mat-icon>
+                    <span *ngIf="expand">Edit labels</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-icon class="navigate-icon">archive</mat-icon>
+                  <span *ngIf="expand">Archive</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon class="navigate-icon">delete_outline</mat-icon>
+                    <span *ngIf="expand">Trash</span>
+                </mat-list-item>
+              </mat-nav-list>
+            </mat-sidenav>
+            <mat-sidenav-content>
+              
+            </mat-sidenav-content>
+          </mat-sidenav-container>
+    </div>
+</div>
