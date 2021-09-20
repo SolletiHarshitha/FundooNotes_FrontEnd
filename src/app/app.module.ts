@@ -36,7 +36,7 @@ import { MaterialModule } from './material/material.module';
     DashboardComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,

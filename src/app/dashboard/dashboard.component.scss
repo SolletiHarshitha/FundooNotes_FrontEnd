@@ -1,29 +1,32 @@
 .ToolBar{
     box-sizing: border-box;
     display: flex;
-    background-color: white;
     align-items: center;
-    .header{
-      margin: 0 20px;
+    border: 1px solid grey;
+    mat-toolbar{
+      background-color: #fff !important;
+      .header{
+        padding-left: 10px;
+        padding-right: 30px;
+      }
     }
 }
-.dashboard{
-  overflow: hidden !important;
-}
+
 .searchField{
-  margin: 0 30px;
-  width: 510px;
-  align-items: center;
- // background-color: white;
-  margin: 0 30px;
+  margin: 10px 30px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   input{
-  font-size: 15px;
+  font-size: 20px;
   font-family: sans-serif;
+  align-items: center;
   }
 }
 .sideContainer {
     height: 100ex;
-    border: 0px solid #fff;
+    background-color: white;
 }
 
 .sideNav
@@ -44,9 +47,7 @@
   }
 }
 
-.toolbar-icon{
-  margin: 0 5px;
-}
+
 
 .rightContainer{
   display: flex;

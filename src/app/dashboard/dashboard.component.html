@@ -1,7 +1,7 @@
 <div class="dashboard">
     <div class="ToolBar">
         <mat-toolbar>
-            <button mat-icon-button class="toolbar-icon" aria-label="menu icon" (click)="expand=!expand">
+            <button mat-icon-button class="toolbar-icon" aria-label="menu icon" (click)="onToolbarMenuToggle()">
                 <mat-icon>menu</mat-icon>
            </button>
            <img src="../assets/keep_pic.png">
@@ -11,7 +11,7 @@
             <div class="searchBar">
               <mat-form-field appearance="outline" class="searchField">
                 <button mat-icon-button class="toolbar-icon" aria-label="search icon">
-                  <mat-icon matPrefix>search</mat-icon>
+                  <mat-icon>search</mat-icon>
                 </button>
                 <input matInput type="text" placeholder="Search">
               </mat-form-field>
@@ -40,7 +40,7 @@
     </div>
     <div class="navigationContainer">
         <mat-sidenav-container class="sideContainer">
-            <mat-sidenav #drawer mode="side" opened="true" autosize>
+            <mat-sidenav #drawer mode="side" opened="true">
               <mat-nav-list class="sideNav" (mouseover)="expand=true" (mouseleave)="expand=false">
                 <mat-list-item>
                     <mat-icon class="navigate-icon">lightbulb_outline</mat-icon>
@@ -67,6 +67,6 @@
             <mat-sidenav-content>
               
             </mat-sidenav-content>
-          </mat-sidenav-container>
+        </mat-sidenav-container>
     </div>
 </div>
