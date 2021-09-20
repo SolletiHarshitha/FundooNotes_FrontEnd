@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { getMatFormFieldMissingControlError } from '@angular/material/form-field';
 import { MatGridAvatarCssMatStyler } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../material/material.module';
 
 @Component({
   selector: 'app-dashboard',

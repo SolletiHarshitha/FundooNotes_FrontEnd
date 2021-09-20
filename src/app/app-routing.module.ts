@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 const data = localStorage.getItem('FundooForget'); 
 const token = data != null ? JSON.parse(data).Token : '';
