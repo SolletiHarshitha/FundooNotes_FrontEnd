@@ -5,6 +5,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { CreateNotesComponent } from './Components/create-notes/create-notes.component';
 
 const data = localStorage.getItem('FundooForget'); 
 const token = data != null ? JSON.parse(data).Token : '';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path : 'login', component:LoginComponent},
   { path : 'forgotPassword', component:ForgotPasswordComponent},
   { path : `resetPassword/${token}`, component:ResetPasswordComponent},
-  { path : `dashboard`, component:DashboardComponent}
+  { path : `dashboard`, component:DashboardComponent},
+  { path : `createNotes`, component:CreateNotesComponent}
 ];
 
 @NgModule({

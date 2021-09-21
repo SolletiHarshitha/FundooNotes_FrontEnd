@@ -1,0 +1,35 @@
+.displayCard{
+    display: block;
+    width: 550px;
+    margin: 32px auto 16px auto;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+.hiddenCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 550px;
+    margin: 32px auto 16px auto;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.input{
+    width: 100%;
+    border-width:0px;
+    border:none;
+    outline:none;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.textarea{
+    resize: none;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -16px;
+}

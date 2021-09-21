@@ -1,0 +1,26 @@
+<div class="mainContainer">
+    <mat-card class="displayCard" *ngIf="!show" (click)="show=!show">
+        <mat-card-title>
+            <input matInput placeholder="Take a note..." class="input">
+        </mat-card-title>
+    </mat-card>
+    <mat-card class="hiddenCard" *ngIf="show">
+        <form [formGroup]="CreateNoteForm">
+            <mat-card-title class="header">
+                <input matInput placeholder="Title" formControlName="Title" class="input">
+                <i class="material-icons">push_pin</i>
+            </mat-card-title>
+            <mat-card-content>
+                <textarea matInput placeholder="Take a note..." formControlName="Description" class=" input textarea"></textarea>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="footer">
+                    <div class="icons"></div>
+                    <div class="button">
+                        <button mat-flat-button (click)="show=!show">Close</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
