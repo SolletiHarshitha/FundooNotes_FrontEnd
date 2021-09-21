@@ -27,12 +27,19 @@
                 <button mat-icon-button class="toolbar-icon" aria-label="account_circle icon" [matMenuTriggerFor]="menu">
                   <mat-icon>account_circle</mat-icon>
                 </button>
-                <mat-menu #menu="matMenu">
-                  <div>
+                <mat-menu #menu="matMenu" class="profileMenu" yPosition="below">
+                  <div class="userProfile">
+                    <button mat-icon-button class="toolbar-icon" aria-label="account_circle icon">
+                      <mat-icon>account_circle</mat-icon>
+                    </button>
+                  </div>
+                  <div class="user">
                     <p>{{ name }}</p>
                     <p>{{ email }}</p>
                   </div>
+                  <div class="logout">
                   <button mat-stroked-button (click)="LogOut()">Log Out</button>
+                  </div>
                 </mat-menu> 
               </div>
             </div>
@@ -42,25 +49,25 @@
         <mat-sidenav-container class="sideContainer">
             <mat-sidenav #drawer mode="side" opened="true">
               <mat-nav-list class="sideNav" (mouseover)="expand=true" (mouseleave)="expand=false">
-                <mat-list-item>
+                <mat-list-item class="matList">
                     <mat-icon class="navigate-icon">lightbulb_outline</mat-icon>
-                    <span *ngIf="expand">Notes</span>
+                    <span *ngIf="expand" class="label">Notes</span>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item class="matList">
                     <mat-icon class="navigate-icon">notifications_none</mat-icon>
-                    <span *ngIf="expand">Reminders</span>
+                    <span *ngIf="expand" class="label">Reminders</span>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item class="matList">
                     <mat-icon class="material-icons-outlined">edit</mat-icon>
-                    <span *ngIf="expand">Edit labels</span>
+                    <span *ngIf="expand" class="label">Edit labels</span>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item class="matList">
                   <mat-icon class="material-icons-outlined">archive</mat-icon>
-                  <span *ngIf="expand">Archive</span>
+                  <span *ngIf="expand" class="label">Archive</span>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item class="matList">
                     <mat-icon class="navigate-icon">delete_outline</mat-icon>
-                    <span *ngIf="expand">Trash</span>
+                    <span *ngIf="expand" class="label">Trash</span>
                 </mat-list-item>
               </mat-nav-list>
             </mat-sidenav>

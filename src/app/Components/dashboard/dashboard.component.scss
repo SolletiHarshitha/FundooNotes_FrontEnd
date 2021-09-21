@@ -1,13 +1,17 @@
 .ToolBar{
     box-sizing: border-box;
     display: flex;
-    align-items: center;
-    border: 1px solid grey;
+    border: 1px solid rgb(190, 187, 187);
     mat-toolbar{
       background-color: #fff !important;
       .header{
         padding-left: 10px;
         padding-right: 30px;
+        font-family: sans-serif;
+        color: rgb(80, 79, 79);
+      }
+      mat-icon{
+        color: rgb(80, 79, 79);
       }
     }
 }
@@ -17,17 +21,22 @@
   width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 50% !important;
+  justify-content: space-around;
   input{
   font-size: 15px;
   font-family: sans-serif;
   align-items: center;
   }
 }
+
 .sideContainer {
     height: 100ex;
     background-color: white;
+    mat-sidenav{
+    border-width:0px;
+    border:none !important;
+    outline:none;
+  }
 }
 
 .sideNav
@@ -37,18 +46,20 @@
   {
     margin-left: 5px;
     margin-right: 2ex;
-  }
-  .navLabel
-  {
-    font-family: 'Google Sans',Roboto,Arial,sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.25rem;
-    margin-top: 6px;
+    color: rgb(80, 79, 79);
   }
 }
 
-
+.matList{
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  .label{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 30px;
+    font-weight: 500;
+  }
+}
 
 .rightContainer{
   display: flex;
@@ -56,11 +67,25 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 30px;
+  
+}
+
+.userProfile{
   .toolbar-icon{
-    margin-left: 20px;
+    transform: scale(2);
+    padding-top: 10px;
+    padding-left: 8.2ex;
+    color: rgb(80, 79, 79);
   }
-  mat-menu{
-    display: flex;
-    justify-content: center;
-  }
+}
+
+.user{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+}
+.logout{
+  text-align: center;
+  padding-bottom: 10px;
 }

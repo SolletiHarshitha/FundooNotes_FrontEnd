@@ -12,8 +12,6 @@ import { MaterialModule } from '../../material/material.module';
 export class DashboardComponent implements OnInit {
   expand = false;
   view = false;
-  isMenuOpen = true;
-  contentMargin = 240;
   name = "";
   email = "";
 
