@@ -16,16 +16,23 @@
     }
 }
 
-.searchField{
-  margin: 10px 30px;
-  width: 700px;
+.searchBar{
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
+  flex: 1 1 auto;
+}
+.searchField{
+  display: flex;
+  width: 700px;
+  justify-content: space-between;
+  padding: 10px;
   input{
-  font-size: 15px;
-  font-family: sans-serif;
-  align-items: center;
+    border-width:0px;
+    border:none;
+    outline:none;
+    width: 100%;
+    font-size: 15px;
+    font-family: sans-serif;
   }
 }
 
