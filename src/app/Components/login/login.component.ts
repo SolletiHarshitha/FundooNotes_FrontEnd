@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           Token: result.resultMessage
         }
         localStorage.setItem('FundooUser', JSON.stringify(params));
+        this.router.navigateByUrl('/dashboard');
       }
     }, (error: HttpErrorResponse) => {
       if(!error.error.status){

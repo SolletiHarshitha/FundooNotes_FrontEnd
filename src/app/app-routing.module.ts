@@ -7,7 +7,7 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { CreateNotesComponent } from './Components/create-notes/create-notes.component';
 
-const data = localStorage.getItem('FundooForget'); 
+const data = localStorage.getItem('FundooForgot'); 
 const token = data != null ? JSON.parse(data).Token : '';
 
 const routes: Routes = [

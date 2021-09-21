@@ -1,10 +1,10 @@
 <div class="iconBar">
     <button mat-icon-button class="toolbar-icon" aria-label="add_alert icon">
-        <mat-icon [matMenuTriggerFor]="reminder">add_alert</mat-icon>
+        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]="reminder">add_alert</mat-icon>
     </button>
     <mat-menu #reminder="matMenu" class="reminderMenu">
         <p class="reminderHeader">Reminder: </p>
-        <button mat-menu-item>
+        <button mat-menu-item class="reminderOption"> 
             <p>Later today 8:00PM</p>
         </button>
         <button mat-menu-item>
@@ -14,20 +14,64 @@
             <p>Next week, Mon,8:00AM</p>
         </button>
         <button mat-menu-item>
-            <!--<mat-icon>access_time</mat-icon>-->
-            <p>Pick date & time</p>
+            <mat-icon>access_time</mat-icon>
+            Pick date & time
         </button>
         <button mat-menu-item>
-            <!--<mat-icon>place</mat-icon>-->
-            <p>Pick place</p>
+            <mat-icon>place</mat-icon>
+            Pick place
         </button>
     </mat-menu>
     <button mat-icon-button class="toolbar-icon" aria-label="person_add icon">
         <mat-icon class="material-icons-outlined">person_add</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="color_lens icon">
-        <mat-icon class="material-icons-outlined">color_lens</mat-icon>
+        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]="color">color_lens</mat-icon>
     </button>
+    <mat-menu #color="matMenu" class="colorMenu" yPosition="above">
+        <div>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: white;">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(230, 107, 107);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(223, 158, 39);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(230, 230, 91);">circle</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(105, 202, 105);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(116, 235, 235);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(173, 173, 211);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(91, 91, 168);">circle</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(194, 144, 194);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(243, 201, 208);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(192, 141, 141);">circle</mat-icon>
+            </button>
+            <button mat-icon-button class="color-icon">
+                <mat-icon style="color: rgb(128, 128, 128);">circle</mat-icon>
+            </button>
+        </div>
+    </mat-menu>
     <button mat-icon-button class="toolbar-icon" aria-label="image icon">
         <mat-icon class="material-icons-outlined">image</mat-icon>
     </button>
@@ -47,11 +91,5 @@
         <button mat-menu-item>
             <p>Show checkboxes</p>
         </button>
-    </mat-menu>
-    <button mat-icon-button class="toolbar-icon" aria-label="undo icon">
-        <mat-icon class="material-icons-outlined">undo</mat-icon>
-    </button>
-    <button mat-icon-button class="toolbar-icon" aria-label="redo icon">
-        <mat-icon class="material-icons-outlined">redo</mat-icon>
-    </button>   
+    </mat-menu>  
 </div>
