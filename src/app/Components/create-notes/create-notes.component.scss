@@ -27,9 +27,11 @@
 .textarea{
     resize: none;
 }
-
-.button{
+.footer{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+}
+.button{
     margin-bottom: -16px;
 }
