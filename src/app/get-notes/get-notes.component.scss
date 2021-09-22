@@ -1,0 +1,17 @@
+.noteCard{
+    width:fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    height: fit-content;
+    margin: 30px;flex-direction: column;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.description{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

@@ -22,12 +22,17 @@
   display: flex;
   justify-content: space-around;
   flex: 1 1 auto;
+  padding: 2px;
 }
 .searchField{
   display: flex;
   width: 700px;
-  justify-content: space-between;
-  padding: 10px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+  border: 1px solid transparent;
+  box-shadow: none;
   input{
     border-width:0px;
     border:none;
@@ -37,9 +42,13 @@
     font-family: sans-serif;
   }
 }
-
+.searchField:hover{
+  background-color: white;
+  border: 1px #ccc;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
 .sideContainer {
-    height: 100ex;
+    height: 100vh;
     background-color: white;
     mat-sidenav{
     border-width:0px;

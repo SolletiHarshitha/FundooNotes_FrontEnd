@@ -27,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MaterialModule } from './material/material.module';
 import { CreateNotesComponent } from './Components/create-notes/create-notes.component';
 import { NoteIconsComponent } from './Components/note-icons/note-icons.component';
+import { GetNotesComponent } from './get-notes/get-notes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NoteIconsComponent } from './Components/note-icons/note-icons.component
     ResetPasswordComponent,
     DashboardComponent,
     CreateNotesComponent,
-    NoteIconsComponent
+    NoteIconsComponent,
+    GetNotesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
