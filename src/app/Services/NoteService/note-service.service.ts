@@ -6,16 +6,27 @@ import { HttpServiceService } from '../HttpService/http-service.service';
   providedIn: 'root'
 })
 export class NoteServiceService {
+  user = JSON.parse(localStorage.getItem('FundooUser')!);
+  header : any;
 
   constructor(
     private httpService: HttpServiceService
   ) { }
 
-  header = {
-    headers: { Authorization: "Bearer " + localStorage.getItem('FundooUser'), },
+  getToken(){
+    this.header = {
+      headers: { Authorization: "Bearer " + this.user.Token }
+    }
   }
 
-  CreateNote(data: any){
-    return this.httpService.post(`${environment.baseUrl}/api/login`, data, true, this.header);
+  CreateNote(token: any, data: any){
+   
+    const params = {
+      Title : data.title,
+      Description : data.description,
+      UserId : JSON.parse(localStorage.getItem('FundooUser')!).UserId//this.user.UserId
+    };
+    this.getToken();
+    return this.httpService.post(`${environment.baseUrl}/api/Note/AddNote`, data, true, this.header);
   }
 }

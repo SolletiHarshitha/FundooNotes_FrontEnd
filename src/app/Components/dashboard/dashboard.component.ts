@@ -24,16 +24,7 @@ export class DashboardComponent implements OnInit {
     this.name = JSON.parse(userData!).FirstName;
     this.email = JSON.parse(userData!).Email;
   }
-  onToolbarMenuToggle() {
-    console.log('On toolbar toggled', this.expand);
-    this.expand = !this.expand;
-
-    //if(!this.expand) {
-    //  this.contentMargin = 70;
-    //} else {
-    //  this.contentMargin = 240;
-    //}
-  }
+  
   LogOut(){
     localStorage.removeItem('FundooUser');
     this.router.navigateByUrl('/login');

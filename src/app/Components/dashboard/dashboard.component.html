@@ -1,7 +1,7 @@
 <div class="dashboard">
     <div class="ToolBar">
         <mat-toolbar>
-            <button mat-icon-button class="toolbar-icon" aria-label="menu icon" (click)="onToolbarMenuToggle()">
+            <button mat-icon-button class="toolbar-icon" aria-label="menu icon" (click)="expand=!expand">
                 <mat-icon>menu</mat-icon>
            </button>
            <img src="../assets/keep_pic.png">
@@ -19,8 +19,8 @@
             <div class="rightContainer">
               <div>
                 <button mat-icon-button class="toolbar-icon" aria-label="list icon" (click)="view=!view">
-                  <mat-icon *ngIf=view>view_list</mat-icon>
-                  <mat-icon *ngIf=!view>grid_view</mat-icon>
+                  <mat-icon *ngIf=!view>view_list</mat-icon>
+                  <mat-icon *ngIf=view>grid_view</mat-icon>
               </button>
               </div>
               <div class="account">

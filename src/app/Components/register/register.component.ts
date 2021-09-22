@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       {
         this.router.navigateByUrl('/login');
       }
-    }, (error: HttpErrorResponse) => {
+    },(error: HttpErrorResponse) => {
       if(!error.error.status){
         this.snackBar.open(`${error.error.message}`, '', {
           duration:5000
