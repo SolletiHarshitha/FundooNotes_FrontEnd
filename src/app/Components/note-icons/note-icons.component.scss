@@ -1,5 +1,5 @@
 .toolbar-icon{
-    margin: 0 5px;
+   // margin: 0 2px;
     color: rgb(80, 79, 79);
 }
 .location{
@@ -9,4 +9,7 @@
 .reminderHeader{
     padding-left: 20px;
     padding-top: 10px;
+}
+mat-icon{
+    font-size: 18px;
 }
