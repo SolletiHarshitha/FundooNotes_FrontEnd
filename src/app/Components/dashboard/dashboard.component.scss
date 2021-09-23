@@ -40,12 +40,16 @@
     width: 100%;
     font-size: 15px;
     font-family: sans-serif;
+    background-color: #f1f3f4;
   }
 }
 .searchField:hover{
   background-color: white;
   border: 1px #ccc;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  input{
+    background-color: white;
+  }
 }
 .sideContainer {
     height: 100vh;
@@ -107,3 +111,4 @@
   text-align: center;
   padding-bottom: 10px;
 }
+

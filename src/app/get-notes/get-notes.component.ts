@@ -7,6 +7,8 @@ import { NoteServiceService } from '../Services/NoteService/note-service.service
 })
 export class GetNotesComponent implements OnInit {
   notes: any = [];
+  show = false;
+  isPin = false;
 
   constructor(
     private noteService:NoteServiceService

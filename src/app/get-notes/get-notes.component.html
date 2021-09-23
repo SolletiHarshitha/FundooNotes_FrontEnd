@@ -1,12 +1,14 @@
 <div class="noteContainer">
-    <mat-card class="noteCard" *ngFor="let note of notes">
+    <mat-card class="noteCard" *ngFor="let note of notes" (mouseover)="show=true" (mouseleave)="show=false">
         <div class="title">
-            <mat-card-title>{{ note.title }}</mat-card-title>
+            <mat-card-title>
+                <p>{{ note.title }}</p>
+            </mat-card-title>
         </div>
         <div class="description">
             <mat-card-content>{{ note.description }}</mat-card-content>
         </div>
-        <div class="icons">
+        <div class="icons" *ngIf="show">
             <app-note-icons></app-note-icons>
         </div>
     </mat-card>

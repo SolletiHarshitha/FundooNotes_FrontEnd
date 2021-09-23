@@ -1,17 +1,22 @@
 .noteCard{
-    width:fit-content;
+    width: 300px;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid #ccc;
-    height: fit-content;
-    margin: 30px;flex-direction: column;
+    height: 110px;
+    margin: 30px;
+    flex-direction: column;
 }
 .title{
+    //display: flex;
+    //justify-content: space-between;
+    p{
+        font-size: 15px;
+    }
+}
+
+.noteContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-}
-.description{
-    margin-top: 5px;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
 }

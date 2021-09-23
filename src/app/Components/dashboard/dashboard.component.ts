@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   view = false;
   name = "";
   email = "";
+  getNotes="Notes"
 
   constructor(
     private router: Router
