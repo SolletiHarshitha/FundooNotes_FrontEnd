@@ -1,0 +1,28 @@
+.collaboratorContainer{
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+mat-icon{
+    color: grey;
+}
+.owner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0px;
+    .details{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+    mat-icon{
+        transform: scale(2);
+    }
+}
+.collaborator{
+    display: flex;
+    flex-direction: row;
+    
+}

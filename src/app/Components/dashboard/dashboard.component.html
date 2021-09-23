@@ -4,9 +4,12 @@
             <button mat-icon-button class="toolbar-icon" aria-label="menu icon" (click)="expand=!expand">
                 <mat-icon>menu</mat-icon>
            </button>
-           <img src="../assets/keep_pic.png">
+           <img *ngIf="getNotes=='Notes'" src="../assets/keep_pic.png">
            <mat-card-title class="header">
-                <span>Fundoo</span>
+                <span *ngIf="getNotes=='Notes'">Fundoo</span>
+                <span *ngIf="getNotes=='Reminders'">Reminders</span>
+                <span *ngIf="getNotes=='Archive'">Archive</span>
+                <span *ngIf="getNotes=='Trash'">Trash</span>
             </mat-card-title>
             <div class="searchBar">
               <mat-card class="searchField">
@@ -56,7 +59,11 @@
                     <mat-icon class="navigate-icon">notifications_none</mat-icon>
                     <span *ngIf="expand" class="label">Reminders</span>
                 </mat-list-item>
-                <mat-list-item class="matList" (click)="getNotes='Edit labels'">
+                <mat-list-item class="matList" *ngFor="let label of labels" (click)="getNotes='Label';labelNote=label">
+                    <mat-icon class="material-icons-outlined">label</mat-icon>
+                    <span *ngIf="expand" class="label">{{ label.labelName }}</span>
+                </mat-list-item>
+                <mat-list-item class="matList">
                     <mat-icon class="material-icons-outlined">edit</mat-icon>
                     <span *ngIf="expand" class="label">Edit labels</span>
                 </mat-list-item>
@@ -72,12 +79,18 @@
             </mat-sidenav>
             <mat-sidenav-content>
               <div class="createNote">
-                <app-create-notes></app-create-notes>
+                <app-create-notes *ngIf='getNotes=="Notes" || getNotes=="Reminders"'></app-create-notes>
               </div>
               <div>
                 <app-get-notes *ngIf='getNotes=="Notes"'></app-get-notes>
+              </div>
+              <div>
                 <app-get-reminders *ngIf='getNotes=="Reminders"'></app-get-reminders>
+              </div>
+              <div>
                 <app-get-archive *ngIf='getNotes=="Archive"'></app-get-archive>
+              </div>
+              <div>
                 <app-get-trash *ngIf='getNotes=="Trash"'></app-get-trash>
               </div>
             </mat-sidenav-content>

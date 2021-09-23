@@ -70,4 +70,5 @@ export class NoteServiceService {
     var userId = this.user.UserId;
     return this.httpService.get(`${environment.baseUrl}/api/Note/GetReminderNotes?userId=${userId}`, true, this.header);
   }
+ 
 }
