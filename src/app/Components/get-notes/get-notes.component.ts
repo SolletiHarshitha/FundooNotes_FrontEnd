@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NoteServiceService } from '../Services/NoteService/note-service.service';
+import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+
 @Component({
   selector: 'app-get-notes',
   templateUrl: './get-notes.component.html',
@@ -26,4 +27,5 @@ export class GetNotesComponent implements OnInit {
       console.log(this.notes);
     });
   }
+
 }
