@@ -39,12 +39,30 @@ export class NoteServiceService {
   }
 
   Archive(noteId:any){
-    var userId = this.user.UserId;
-    return this.httpService.put(`${environment.baseUrl}/api/Note/Archive?noteId=${noteId}`, true, this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/Note/Archive?noteId=${noteId}`, null, true, this.header);
   }
 
   Unarchive(noteId:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/UnArchive?noteId=${noteId}`, null, true, this.header);
+  }
+
+  GetTrashNotes(){
     var userId = this.user.UserId;
-    return this.httpService.put(`${environment.baseUrl}/api/Note/UnArchive?noteId=${noteId}`, true, this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Note/GetTrashNotes?userId=${userId}`, true, this.header);
+  }
+
+  EmptyTrash(){
+    var userId = this.user.UserId;
+    return this.httpService.delete(`${environment.baseUrl}/api/Note/EmptyTrash?userId=${userId}`, true, this.header);
+  }
+
+  DeleteForever(noteId: any)
+  {
+    return this.httpService.delete(`${environment.baseUrl}/api/Note/DeleteForever?noteId=${noteId}`, true, this.header);
+  }
+
+  Restore(noteId: any)
+  {
+    return this.httpService.put(`${environment.baseUrl}/api/Note/RestoreNote?noteId=${noteId}`,null, true, this.header);
   }
 }
