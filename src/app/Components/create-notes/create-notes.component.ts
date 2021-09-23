@@ -14,7 +14,6 @@ export class CreateNotesComponent implements OnInit {
   CreateNoteForm !: FormGroup;
   show = false;
   isPin = false;
-  token : any;
   //icon : any;
 
   constructor(

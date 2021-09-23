@@ -1,0 +1,24 @@
+<div class="updateNote">
+    <mat-card class="noteCard">
+      
+            <mat-card-title class="header">
+                <input matInput placeholder="Title" class="input" value="{{ data.title }}">
+                <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
+                <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
+            </mat-card-title>
+            <mat-card-content>
+                <textarea matInput cdkTextareaAutosize placeholder="Note" formControlName="description" class=" input textarea"></textarea>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="footer">
+                    <div class="icons">
+                        <app-note-icons></app-note-icons>
+                    </div>
+                    <div class="button">
+                        <button mat-flat-button mat-dialog-close (click)="EditNote()">Close</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        
+    </mat-card>
+</div>

@@ -1,5 +1,5 @@
 <div class="noteContainer">
-    <mat-card class="noteCard" *ngFor="let note of notes" (mouseover)="show=true" (mouseleave)="show=false">
+    <mat-card class="noteCard" *ngFor="let note of notes" (mouseover)="show=true" (mouseleave)="show=false"(click)="OpenNote(note)">
         <div class="title">
             <mat-card-title>
                 <p>{{ note.title }}</p>

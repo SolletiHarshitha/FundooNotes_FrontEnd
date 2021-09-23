@@ -71,4 +71,11 @@ export class NoteServiceService {
     return this.httpService.get(`${environment.baseUrl}/api/Note/GetReminderNotes?userId=${userId}`, true, this.header);
   }
  
+  EditNote(data: any){
+    const params = {
+      Title : data.title,
+      Description: data.description
+    }
+    return this.httpService.put(`${environment.baseUrl}/api/Note/UpdateNote`,null, true, this.header);
+  }
 }
