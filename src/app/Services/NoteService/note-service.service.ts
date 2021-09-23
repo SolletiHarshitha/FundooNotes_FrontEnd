@@ -31,6 +31,20 @@ export class NoteServiceService {
   GetNotes(){
     var userId = this.user.UserId;
     return this.httpService.get(`${environment.baseUrl}/api/Note/GetNotes?userId=${userId}`, true, this.header);
+  }
 
+  GetArchive(){
+    var userId = this.user.UserId;
+    return this.httpService.get(`${environment.baseUrl}/api/Note/GetArchiveNotes?userId=${userId}`, true, this.header);
+  }
+
+  Archive(noteId:any){
+    var userId = this.user.UserId;
+    return this.httpService.put(`${environment.baseUrl}/api/Note/Archive?noteId=${noteId}`, true, this.header);
+  }
+
+  Unarchive(noteId:any){
+    var userId = this.user.UserId;
+    return this.httpService.put(`${environment.baseUrl}/api/Note/UnArchive?noteId=${noteId}`, true, this.header);
   }
 }

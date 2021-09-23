@@ -29,6 +29,7 @@ import { CreateNotesComponent } from './Components/create-notes/create-notes.com
 import { NoteIconsComponent } from './Components/note-icons/note-icons.component';
 import { GetNotesComponent } from './Components/get-notes/get-notes.component';
 import { GetNoteIconsComponent } from './Components/get-note-icons/get-note-icons.component';
+import { GetArchiveComponent } from './Components/get-archive/get-archive.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { GetNoteIconsComponent } from './Components/get-note-icons/get-note-icon
     NoteIconsComponent,
     GetNotesComponent,
     GetNoteIconsComponent,
+    GetArchiveComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

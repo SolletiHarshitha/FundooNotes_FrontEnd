@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note-icons.component.scss']
 })
 export class NoteIconsComponent implements OnInit {
+  archive : any;
 
   constructor() { }
 
