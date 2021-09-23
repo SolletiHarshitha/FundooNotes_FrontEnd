@@ -18,6 +18,11 @@ export class LabelServiceService {
 
   GetLabels(){
     var userId = this.user.UserId;
-    return this.httpService.get(`${environment.baseUrl}/api/api/Label/GetLabelByUserId?userId=${userId}`, true, this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Label/GetLabelByUserId?userId=${userId}`, true, this.header);
+  }
+
+  GetNotesByLabel(labelId: any){
+    var userId = this.user.UserId;
+    return this.httpService.get(`${environment.baseUrl}/api/Label/GetNoteByLabel?userId=${userId}`, true, this.header);
   }
 }

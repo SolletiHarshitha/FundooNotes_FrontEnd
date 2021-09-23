@@ -1,0 +1,15 @@
+<div class="noteContainer">
+    <mat-card class="noteCard" *ngFor="let note of notes">
+        <div class="title">
+            <mat-card-title>
+                <p>{{ note.title }}</p>
+            </mat-card-title>
+        </div>
+        <div class="description">
+            <mat-card-content>{{ note.description }}</mat-card-content>
+        </div>
+        <div class="icons">
+            <app-get-note-icons></app-get-note-icons>
+        </div>
+    </mat-card>
+</div>
