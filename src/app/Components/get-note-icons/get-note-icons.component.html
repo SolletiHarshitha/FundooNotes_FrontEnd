@@ -28,6 +28,16 @@
     <button mat-icon-button class="toolbar-icon" aria-label="color_lens icon">
         <mat-icon class="material-icons-outlined">color_lens</mat-icon>
     </button>
+    <mat-menu #color="matMenu" class="colorMenu" yPosition="above">
+        <div class="menu">
+            <div class="row" *ngFor="let color of colorsList;let i=index">
+                <button mat-icon-button class="color-icon" [ngStyle]="{ 'background-color': color.color }" 
+                matTooltip="{{colorsList[i].toolTip}}" (click)="changecolor(colorsList[i].color)">
+                    <mat-icon *ngIf="colorsList[i].icon">done</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-menu>
     <button mat-icon-button class="toolbar-icon" aria-label="image icon">
         <mat-icon class="material-icons-outlined">image</mat-icon>
     </button>
@@ -42,7 +52,7 @@
         <button mat-menu-item>
             <p>Add label</p>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="MoveIntoTrash()">
             <p>Delete Note</p>
         </button>
     </mat-menu>  

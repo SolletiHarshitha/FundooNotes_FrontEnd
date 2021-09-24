@@ -4,15 +4,15 @@
             <input matInput placeholder="Take a note..." class="input">
         </mat-card-title>
     </mat-card>
-    <mat-card class="hiddenCard" *ngIf="show">
+    <mat-card class="hiddenCard" *ngIf="show" [ngStyle]="{'background':noteColor}">
         <form [formGroup]="CreateNoteForm">
             <mat-card-title class="header">
-                <input matInput placeholder="Title" formControlName="title" class="input">
+                <input matInput placeholder="Title" formControlName="title" class="input" [ngStyle]="{'background':noteColor}">
                 <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
                 <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
             </mat-card-title>
             <mat-card-content>
-                <textarea matInput cdkTextareaAutosize placeholder="Take a note..." formControlName="description" class=" input textarea"></textarea>
+                <textarea matInput cdkTextareaAutosize placeholder="Take a note..." formControlName="description" class=" input textarea" [ngStyle]="{'background':noteColor}"></textarea>
             </mat-card-content>
             <mat-card-actions>
                 <div class="footer">

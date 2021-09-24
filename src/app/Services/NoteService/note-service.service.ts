@@ -74,8 +74,13 @@ export class NoteServiceService {
   EditNote(data: any){
     const params = {
       Title : data.title,
-      Description: data.description
+      Description: data.description,
+      Notes: data.noteId
     }
     return this.httpService.put(`${environment.baseUrl}/api/Note/UpdateNote`,null, true, this.header);
+  }
+
+  MoveIntoTrash(noteId: number){
+    return this.httpService.delete(`${environment.baseUrl}/api/Note/DeleteNote?noteId=${noteId}`, true, this.header);
   }
 }

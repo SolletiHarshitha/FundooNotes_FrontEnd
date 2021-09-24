@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-get-trash',
@@ -10,7 +11,8 @@ export class GetTrashComponent implements OnInit {
   notes: any = [];
 
   constructor(
-    private noteService:NoteServiceService
+    private noteService:NoteServiceService,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,8 @@ export class GetTrashComponent implements OnInit {
     this.noteService.EmptyTrash()
     .subscribe((result:any)=>{
       console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        duration:5000});
       this.notes = result.data;
       console.log(this.notes);
     })
@@ -39,6 +43,8 @@ export class GetTrashComponent implements OnInit {
     this.noteService.DeleteForever(note.noteId)
     .subscribe((result:any)=>{
       console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        duration:5000});
       this.notes = result.data;
       console.log(this.notes);
     })
@@ -48,6 +54,8 @@ export class GetTrashComponent implements OnInit {
     this.noteService.Restore(note.noteId)
     .subscribe((result:any)=>{
       console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        duration:5000});
       this.notes = result.data;
       console.log(this.notes);
     })

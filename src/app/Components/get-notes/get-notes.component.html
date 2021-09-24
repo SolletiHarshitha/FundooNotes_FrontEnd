@@ -1,15 +1,15 @@
 <div class="noteContainer">
-    <mat-card class="noteCard" *ngFor="let note of notes" (mouseover)="show=true" (mouseleave)="show=false"(click)="OpenNote(note)">
-        <div class="title">
+    <mat-card class="noteCard" *ngFor="let note of notes" (mouseover)="show=true" (mouseleave)="show=false">
+        <div class="title" (click)="OpenNote(note)">
             <mat-card-title>
                 <p>{{ note.title }}</p>
             </mat-card-title>
         </div>
-        <div class="description">
+        <div class="description" (click)="OpenNote(note)">
             <mat-card-content>{{ note.description }}</mat-card-content>
         </div>
         <div class="icons">
-            <app-get-note-icons></app-get-note-icons>
+            <app-get-note-icons [notes]=note></app-get-note-icons>
         </div>
     </mat-card>
 </div>

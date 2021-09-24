@@ -25,4 +25,8 @@ export class LabelServiceService {
     var userId = this.user.UserId;
     return this.httpService.get(`${environment.baseUrl}/api/Label/GetNoteByLabel?userId=${userId}`, true, this.header);
   }
+
+  GetLabelsByNote(noteId: number){
+    return this.httpService.get(`${environment.baseUrl}/api/Label/GetLabelByNoteId?noteId=${noteId}`, true, this.header);
+  }
 }

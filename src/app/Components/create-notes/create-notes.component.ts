@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
-//import { NoteIconsComponent } from '../note-icons/note-icons.component';
+
 
 @Component({
   selector: 'app-create-notes',
@@ -14,12 +14,12 @@ export class CreateNotesComponent implements OnInit {
   CreateNoteForm !: FormGroup;
   show = false;
   isPin = false;
-  //icon : any;
+  noteColor = "white";
 
   constructor(
     private noteService: NoteServiceService,
     public snackBar : MatSnackBar,
-    //public icon : NoteIconsComponent
+    
   ) { }
 
   ngOnInit(): void {
