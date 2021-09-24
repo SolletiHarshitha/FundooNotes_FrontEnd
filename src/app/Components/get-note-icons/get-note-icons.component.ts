@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class GetNoteIconsComponent implements OnInit {
   archive:any;
+  email: string = "";
   
   noteColor: any = "white";
   colorsList: any = [] = [
@@ -70,6 +71,8 @@ export class GetNoteIconsComponent implements OnInit {
       .subscribe((result:any)=>{
         console.log(result);
         this.snackBar.open(`${result.message}`, '', {
+          verticalPosition:"bottom",
+          horizontalPosition:"left",
           duration:5000});
       })
     }
@@ -78,16 +81,22 @@ export class GetNoteIconsComponent implements OnInit {
       .subscribe((result:any)=>{
         console.log(result);
         this.snackBar.open(`${result.message}`, '', {
+          verticalPosition:"bottom",
+          horizontalPosition:"left",
           duration:5000});
       })
     }
   }
 
-  OpenCollaborator(){
-    const dialogRef = this.dialog.open(AddCollaboratorComponent);
+  OpenCollaborator(): void {
+    const dialogRef = this.dialog.open(AddCollaboratorComponent, {
+      width: '600px',
+      data: {noteId: this.notes.noteId, email: this.email}
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log('The dialog was closed');
+      this.email = result;
     });
   }
 
@@ -101,6 +110,10 @@ export class GetNoteIconsComponent implements OnInit {
     this.noteService.MoveIntoTrash(this.notes.noteId)
     .subscribe((result:any)=>{
       console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:5000});
     })
   }
 }

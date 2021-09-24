@@ -75,8 +75,8 @@
         <mat-icon class="material-icons-outlined">image</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="archive icon">
-        <mat-icon class="material-icons-outlined" *ngIf="!archive" (click)="archive=true">archive</mat-icon>
-        <mat-icon class="material-icons-outlined" *ngIf="archive" (click)="archive=false">unarchive</mat-icon>
+        <mat-icon class="material-icons-outlined" *ngIf="!archive" (click)="archive=true;isArchive()">archive</mat-icon>
+        <mat-icon class="material-icons-outlined" *ngIf="archive" (click)="archive=false;isArchive()">unarchive</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="more_vert icon">
         <mat-icon class="material-icons" [matMenuTriggerFor]="more">more_vert</mat-icon>

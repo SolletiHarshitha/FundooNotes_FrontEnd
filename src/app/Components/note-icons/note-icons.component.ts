@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-note-icons',
@@ -8,6 +11,7 @@ import { NoteServiceService } from 'src/app/Services/NoteService/note-service.se
 })
 export class NoteIconsComponent implements OnInit {
   archive : any;
+
   noteColor: any = "white";
   colorsList: any = [] = [
     {
@@ -49,16 +53,42 @@ export class NoteIconsComponent implements OnInit {
   ]
 
   constructor(
-    private note: NoteServiceService
+    private noteService:NoteServiceService,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
   }
 
+  @Input() notes: any;
+
   changecolor(color:any){
     this.noteColor = color;
     for(var col of this.colorsList){
       col.icon = col.color == color ? true : false;
+    }
+  }
+
+  isArchive(){
+    if(this.archive == true){
+      this.noteService.Archive(this.notes.noteId)
+      .subscribe((result:any)=>{
+        console.log(result);
+        this.snackBar.open(`${result.message}`, '', {
+          verticalPosition:"bottom",
+          horizontalPosition:"left",
+          duration:5000});
+      })
+    }
+    else{
+      this.noteService.Unarchive(this.notes.noteId)
+      .subscribe((result:any)=>{
+        console.log(result);
+        this.snackBar.open(`${result.message}`, '', {
+          verticalPosition:"bottom",
+          horizontalPosition:"left",
+          duration:5000});
+      })
     }
   }
 }

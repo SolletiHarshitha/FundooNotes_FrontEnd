@@ -15,6 +15,7 @@ export class CreateNotesComponent implements OnInit {
   show = false;
   isPin = false;
   noteColor = "white";
+  create: any;
 
   constructor(
     private noteService: NoteServiceService,
@@ -47,7 +48,9 @@ export class CreateNotesComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       if(!error.error.status){
         this.snackBar.open(`${error.error.message}`, '', {
-          duration:5000
+          duration:5000,
+          verticalPosition:'bottom',
+          horizontalPosition:'left'
         });
       }
     })

@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    padding-bottom: -24px;
 }
 mat-icon{
     color: grey;
@@ -15,7 +16,7 @@ mat-icon{
     .details{
         display: flex;
         flex-direction: column;
-        padding: 20px;
+        padding-left: 20px;
     }
     mat-icon{
         transform: scale(2);
@@ -24,5 +25,23 @@ mat-icon{
 .collaborator{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin: 20px 0;
+    input{
+        margin-left: 10px;
+        margin-right: 30px;
+        font-size: 15px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 0px;
+    }
     
+}
+.button{
+    display: flex;
+    justify-content: flex-end;
+    //background-color: #ccc;
+    align-items: center;
 }

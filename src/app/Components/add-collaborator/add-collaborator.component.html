@@ -1,10 +1,11 @@
 <div class="collaboratorContainer">
     <h2 mat-dialog-title>Collaborators</h2>
     <mat-divider></mat-divider>
-    <div class="owner">
+    <div>
+        <div class="owner">
             <mat-icon>account_circle</mat-icon>
         <div class="details">
-            <mat-label>{{ userName }}</mat-label>
+            <mat-label>{{ userName }}(owner)</mat-label>
             <mat-label>{{ email }}</mat-label>
         </div>
     </div>
@@ -16,12 +17,14 @@
     <div class="collaborator">
         <mat-icon class="material-icons">person_add</mat-icon>
         <input matInput class="coll_name" placeholder="Person or email to share with">
-        <mat-icon (click)="AddCollaborator()">done</mat-icon>
+        <button mat-icon-button>
+            <mat-icon (click)="AddCollaborator()">done</mat-icon>
+        </button>
+        
+    </div>
     </div>
     <div class="button">
-        <mat-dialog-actions>
-            <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-button>Save</button>
-        </mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button>Save</button>
     </div>
 </div>
