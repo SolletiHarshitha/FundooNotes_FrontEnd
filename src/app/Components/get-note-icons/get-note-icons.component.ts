@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class GetNoteIconsComponent implements OnInit {
   archive:any;
   email: string = "";
+  moreMenu = false;
   
   noteColor: any = "white";
   colorsList: any = [] = [

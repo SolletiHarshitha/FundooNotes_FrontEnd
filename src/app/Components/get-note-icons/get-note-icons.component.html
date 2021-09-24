@@ -79,17 +79,17 @@
         <mat-icon class="material-icons-outlined" *ngIf="archive" (click)="archive=false;isArchive()">unarchive</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="more_vert icon">
-        <mat-icon class="material-icons" [matMenuTriggerFor]="more">more_vert</mat-icon>
+        <mat-icon class="material-icons" [matMenuTriggerFor]="!moreMenu ? more : label">more_vert</mat-icon>
     </button>
     <mat-menu #more="matMenu" class="moreMenu">
-        <button mat-menu-item [matMenuTriggerFor]="label">
+        <button mat-menu-item [matMenuTriggerFor]="label" (click)="moreMenu=false">
             <p>Add label</p>
         </button>
         <button mat-menu-item (click)="MoveIntoTrash()">
             <p>Delete Note</p>
         </button>
     </mat-menu>  
-    <mat-menu #label="matMenu" [overlapTrigger]="false" yPosition="below" opened="true" class="label-subMenu">
+    <mat-menu #label="matMenu" opened="true" class="label-subMenu">
         <h3>Label note</h3>
         <div class="input">
             <input matInput placeholder="Enter label name" class="input">

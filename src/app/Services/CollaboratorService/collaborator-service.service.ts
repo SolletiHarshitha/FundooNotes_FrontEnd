@@ -23,12 +23,13 @@ export class CollaboratorServiceService {
   AddCollaborator(data:any){
     const params = {
       NoteId : data.noteId,
-      Email : data.email
+      SenderMail: this.user.Email,
+      ReceiverMail : data.email
     }
     return this.httpService.post(`${environment.baseUrl}/api/Collaborator/AddCollaborator`,params, true, this.header);
   }
 
   DeleteCollaborator(collaboratorId: any){
-    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator/RemoveCollaborator?noteId=${collaboratorId}`, true, this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator/RemoveCollaborator?collaboratorId=${collaboratorId}`, true, this.header);
   }
 }

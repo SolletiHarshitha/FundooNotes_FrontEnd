@@ -34,8 +34,9 @@ import { GetTrashComponent } from './Components/get-trash/get-trash.component';
 import { GetRemindersComponent } from './Components/get-reminders/get-reminders.component';
 import { AddCollaboratorComponent } from './Components/add-collaborator/add-collaborator.component';
 import { EditNoteComponent } from './Components/edit-note/edit-note.component';
-import { GetNotesByLabelComponent } from './Components/get-notes-by-label/get-notes-by-label.component';
 import { EditLabelComponent } from './Components/edit-label/edit-label.component';
+import { GetNotesByLabelComponent } from './Components/get-notes-by-label/get-notes-by-label.component';
+
 
 @NgModule({
   declarations: [

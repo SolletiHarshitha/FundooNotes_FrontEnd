@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   getNotes="Notes";
   labels: any = [];
   labelNote:any;
+  
 
   constructor(
     private router: Router,

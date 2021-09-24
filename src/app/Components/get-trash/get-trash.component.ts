@@ -33,6 +33,8 @@ export class GetTrashComponent implements OnInit {
     .subscribe((result:any)=>{
       console.log(result);
       this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:'bottom',
+        horizontalPosition:'left',
         duration:5000});
       this.notes = result.data;
       console.log(this.notes);
@@ -44,6 +46,8 @@ export class GetTrashComponent implements OnInit {
     .subscribe((result:any)=>{
       console.log(result);
       this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:'bottom',
+        horizontalPosition:'left',
         duration:5000});
       this.notes = result.data;
       console.log(this.notes);
@@ -55,6 +59,8 @@ export class GetTrashComponent implements OnInit {
     .subscribe((result:any)=>{
       console.log(result);
       this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:'bottom',
+        horizontalPosition:'left',
         duration:5000});
       this.notes = result.data;
       console.log(this.notes);

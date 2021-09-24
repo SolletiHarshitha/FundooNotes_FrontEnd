@@ -1,5 +1,7 @@
 <div class="noteContainer">
-    <mat-card class="noteCard" *ngFor="let note of notes" (mouseover)="show=true" (mouseleave)="show=false">
+    <div class="note">PINNED</div>
+    <mat-card class="noteCard" *ngFor="let note of notes" [ngStyle]="{'background-color': note.color}">
+        <mat-icon *ngIf="note.pin">pin</mat-icon>
         <div class="title" (click)="OpenNote(note)">
             <mat-card-title>
                 <p>{{ note.title }}</p>

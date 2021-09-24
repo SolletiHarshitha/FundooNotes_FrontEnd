@@ -11,22 +11,30 @@
     </div>
     <div class="collaborator" *ngFor="let collaborator of collaborators">
         <mat-icon class="material-icons">person_add</mat-icon>
-        <mat-label>{{ collaborator.email }}</mat-label>
+        <mat-label>{{ collaborator.receiverMail }}</mat-label>
         <button mat-icon-button>
             <mat-icon (click)="DeleteCollaborator(collaborator)">close</mat-icon>
         </button>
     </div>
     <div class="collaborator">
+        <form [formGroup]="collaboratorForm">
+            <div>
         <mat-icon class="material-icons">person_add</mat-icon>
-        <input matInput class="coll_name" placeholder="Person or email to share with">
+    </div>
+    <div>
+        <input matInput class="coll_name" [(ngModel)]="data.email"placeholder="Person or email to share with" formControlName="collaboratorEmail">
+        <mat-error *ngIf="collaboratorForm.hasError('email', 'collaboratorEmail')">Invalid Email</mat-error>
+    </div>
+    <div>
         <button mat-icon-button>
             <mat-icon (click)="AddCollaborator()">done</mat-icon>
-        </button>
-        
+        </button> 
+    </div>
+        </form>
     </div>
     </div>
     <div class="button">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-button>Save</button>
+        <button mat-button mat-dialog-close>Save</button>
     </div>
 </div>
