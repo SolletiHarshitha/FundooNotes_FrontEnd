@@ -91,8 +91,10 @@
     </mat-menu>  
     <mat-menu #label="matMenu" [overlapTrigger]="false" yPosition="below" opened="true" class="label-subMenu">
         <h3>Label note</h3>
-        <input matInput placeholder="Enter label name" class="input">
-        <mat-icon>search</mat-icon>
+        <div class="input">
+            <input matInput placeholder="Enter label name" class="input">
+            <mat-icon>search</mat-icon>
+        </div>
         <mat-checkbox class="example-margin">Check me!</mat-checkbox>
     </mat-menu>
 </div>

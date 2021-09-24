@@ -65,7 +65,7 @@
                 </mat-list-item>
                 <mat-list-item class="matList">
                     <mat-icon class="material-icons-outlined">edit</mat-icon>
-                    <span *ngIf="expand" class="label">Edit labels</span>
+                    <span *ngIf="expand" class="label" (click)="OpenEditLabel()">Edit labels</span>
                 </mat-list-item>
                 <mat-list-item class="matList" (click)="getNotes='Archive'">
                   <mat-icon class="material-icons-outlined">archive</mat-icon>

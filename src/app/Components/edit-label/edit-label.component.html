@@ -1,0 +1,29 @@
+<div class="editLabel">
+    <h3>Edit labels</h3>
+    <div class="textLabel">
+        <button mat-icon-button (click)="add=!add">
+            <mat-icon *ngIf=!add>close</mat-icon>
+            <mat-icon *ngIf=add>add_circle_outline</mat-icon>
+        </button>
+        <input matInput placeholder="Create new label">
+        <button mat-icon-button>
+            <mat-icon *ngIf=add (click)="AddLabel(data)">done</mat-icon>
+        </button>
+    </div>
+    <div class="labels" *ngFor="let label of labels">
+        <button mat-icon-button (click)="delete=!delete">
+            <mat-icon *ngFor=!delete>label</mat-icon>
+            <mat-icon *ngFor=delete (click)="DeleteLabel(label)">delete</mat-icon>
+        </button>
+        <div class="text" *ngFor="!update">{{ label.labelName }}</div>
+        <input matInput *ngFor="update" placeholder="Title" class="input" value="{{ label.labelName }}">
+        <button mat-icon-button (click)="update=!update">
+            <mat-icon *ngFor="!update">edit</mat-icon>
+            <mat-icon *ngFor="update">done</mat-icon>
+        </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="button">
+        <button mat-button mat-dialog-close style="float: right;">Done</button>
+    </div>
+</div>

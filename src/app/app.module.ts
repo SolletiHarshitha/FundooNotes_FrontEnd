@@ -35,6 +35,7 @@ import { GetRemindersComponent } from './Components/get-reminders/get-reminders.
 import { AddCollaboratorComponent } from './Components/add-collaborator/add-collaborator.component';
 import { EditNoteComponent } from './Components/edit-note/edit-note.component';
 import { GetNotesByLabelComponent } from './Components/get-notes-by-label/get-notes-by-label.component';
+import { EditLabelComponent } from './Components/edit-label/edit-label.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { GetNotesByLabelComponent } from './Components/get-notes-by-label/get-no
     GetRemindersComponent,
     AddCollaboratorComponent,
     EditNoteComponent,
-    GetNotesByLabelComponent
+    GetNotesByLabelComponent,
+    EditLabelComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

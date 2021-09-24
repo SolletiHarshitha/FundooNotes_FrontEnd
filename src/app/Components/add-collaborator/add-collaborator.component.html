@@ -12,7 +12,9 @@
     <div class="collaborator" *ngFor="let collaborator of collaborators">
         <mat-icon class="material-icons">person_add</mat-icon>
         <mat-label>{{ collaborator.email }}</mat-label>
-        <mat-icon (click)="DeleteCollaborator(collaborator)">close</mat-icon>
+        <button mat-icon-button>
+            <mat-icon (click)="DeleteCollaborator(collaborator)">close</mat-icon>
+        </button>
     </div>
     <div class="collaborator">
         <mat-icon class="material-icons">person_add</mat-icon>

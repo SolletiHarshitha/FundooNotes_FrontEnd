@@ -13,8 +13,13 @@ mat-icon{
     font-size: 18px;
 }
 .label-subMenu{
-    margin-left: 10px;
-    
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    input{
+        display: flex;
+        flex-direction: row;
+    }
 }
 .input{
     border-width:0px;

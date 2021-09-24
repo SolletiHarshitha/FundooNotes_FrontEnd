@@ -4,6 +4,8 @@ import { MatGridAvatarCssMatStyler } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
 import { MaterialModule } from '../../material/material.module';
 import { LabelServiceService } from 'src/app/Services/LabelService/label-service.service';
+import { EditLabelComponent } from '../edit-label/edit-label.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +23,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private labelService: LabelServiceService
+    private labelService: LabelServiceService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -45,5 +48,18 @@ export class DashboardComponent implements OnInit {
       this.labels = result.data;
       console.log(this.labels);
     })
+  }
+
+  OpenEditLabel(): void {
+    const dialogRef = this.dialog.open(EditLabelComponent, {
+      width: '350px',
+      height: 'fit-content',
+      data: {labels: this.labels, email: this.email}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.email = result;
+    });
   }
 }

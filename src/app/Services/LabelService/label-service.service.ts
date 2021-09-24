@@ -29,4 +29,16 @@ export class LabelServiceService {
   GetLabelsByNote(noteId: number){
     return this.httpService.get(`${environment.baseUrl}/api/Label/GetLabelByNoteId?noteId=${noteId}`, true, this.header);
   }
+
+  AddLabel(label: any){
+    const params = {
+      LabelName: label,
+      UserId: this.user.UserId
+    }
+    return this.httpService.post(`${environment.baseUrl}/api/Label/CreateLabel`,params, true, this.header);
+  }
+
+  DeleteLabel(label: any){
+    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator/DeleteLabel`, true, this.header);
+  }
 }
