@@ -2,7 +2,7 @@
     <div class="ToolBar">
         <mat-toolbar>
             <button mat-icon-button class="toolbar-icon" aria-label="menu icon" value="side" (click)="expand=!expand">
-                <mat-icon>menu</mat-icon>
+                <mat-icon matTooltip="Main menu">menu</mat-icon>
            </button>
            <img *ngIf="navButton=='Notes'" src="../assets/keep_pic.png">
            <mat-card-title class="header">
@@ -22,8 +22,8 @@
             <div class="rightContainer">
               <div>
                 <button mat-icon-button class="toolbar-icon" aria-label="list icon" (click)="view=!view">
-                  <mat-icon *ngIf=!view>view_list</mat-icon>
-                  <mat-icon *ngIf=view>grid_view</mat-icon>
+                  <mat-icon *ngIf=!view class="material-icons-outlined" matTooltip="List view">view_list</mat-icon>
+                  <mat-icon *ngIf=view class="material-icons-outlined" matTooltip="Grid view">grid_view</mat-icon>
               </button>
               </div>
               <div class="account">
@@ -60,15 +60,15 @@
                     <span *ngIf="expand" class="label">Reminders</span>
                 </mat-list-item>
                 <mat-list-item class="matList" *ngFor="let label of labels" (click)="navButton='Label';labelNote=label">
-                    <mat-icon class="material-icons-outlined">label</mat-icon>
+                    <mat-icon class="material-icons-outlined navigate-icon">label</mat-icon>
                     <span *ngIf="expand" class="label">{{ label.labelName }}</span>
                 </mat-list-item>
                 <mat-list-item class="matList">
-                    <mat-icon class="material-icons-outlined">edit</mat-icon>
+                    <mat-icon class="material-icons-outlined navigate-icon">edit</mat-icon>
                     <span *ngIf="expand" class="label" (click)="OpenEditLabel()">Edit labels</span>
                 </mat-list-item>
                 <mat-list-item class="matList" (click)="navButton='Archive'">
-                  <mat-icon class="material-icons-outlined">archive</mat-icon>
+                  <mat-icon class="material-icons-outlined navigate-icon">archive</mat-icon>
                   <span *ngIf="expand" class="label">Archive</span>
                 </mat-list-item>
                 <mat-list-item class="matList" (click)="navButton='Trash'">

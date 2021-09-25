@@ -1,9 +1,12 @@
 .toolbar-icon{
+    margin: 0 3px;
     color: rgb(80, 79, 79);
 }
 .location{
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    
 }
 .reminderHeader{
     padding-left: 20px;
@@ -12,17 +15,17 @@
 mat-icon{
     font-size: 18px;
 }
-.label-subMenu{
+.colorMenu{
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    input{
-        display: flex;
-        flex-direction: row;
-    }
+    flex-wrap: wrap;
 }
-.input{
-    border-width:0px;
-    border:none;
-    outline:none;
+.color-icon{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.toolbar-icon:hover{
+    background-color: #dddddd;
 }

@@ -1,6 +1,6 @@
 <div class="iconBar">
     <button mat-icon-button class="toolbar-icon" aria-label="add_alert icon">
-        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]=" reminder">add_alert</mat-icon>
+        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]=" reminder" matTooltip="Remind me">add_alert</mat-icon>
     </button>
     <mat-menu #reminder="matMenu" class="reminderMenu">
         <p class="reminderHeader">Reminder: </p>
@@ -56,10 +56,10 @@
         </button>
     </mat-menu>
     <button mat-icon-button class="toolbar-icon" aria-label="person_add icon" (click)="OpenCollaborator()">
-        <mat-icon class="material-icons-outlined">person_add</mat-icon>
+        <mat-icon class="material-icons-outlined" matTooltip="Collaborator">person_add</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="color_lens icon">
-        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]="color">color_lens</mat-icon>
+        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]="color" matTooltip="Change color">color_lens</mat-icon>
     </button>
     <mat-menu #color="matMenu" class="colorMenu" yPosition="above">
         <div class="menu">
@@ -72,18 +72,29 @@
         </div>
     </mat-menu>
     <button mat-icon-button class="toolbar-icon" aria-label="image icon">
-        <mat-icon class="material-icons-outlined">image</mat-icon>
+        <mat-icon class="material-icons-outlined" matTooltip="Add image">image</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="archive icon">
-        <mat-icon class="material-icons-outlined" *ngIf="!archive" (click)="archive=true;isArchive()">archive</mat-icon>
-        <mat-icon class="material-icons-outlined" *ngIf="archive" (click)="archive=false;isArchive()">unarchive</mat-icon>
+        <mat-icon class="material-icons-outlined" *ngIf="!archive" (click)="archive=true;isArchive()" matTooltip="Archive">archive</mat-icon>
+        <mat-icon class="material-icons-outlined" *ngIf="archive" (click)="archive=false;isArchive()" matTooltip="Unarchive">unarchive</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="more_vert icon">
-        <mat-icon class="material-icons" [matMenuTriggerFor]="more">more_vert</mat-icon>
+        <mat-icon class="material-icons" [matMenuTriggerFor]="!moreMenu? more:label" matTooltip="More">more_vert</mat-icon>
     </button>
-    <mat-menu #more="matMenu" class="moreMenu">
-        <button mat-menu-item>
+    <mat-menu #more="matMenu" class="moreMenu" yPosition="below">
+        <button mat-menu-item [matMenuTriggerFor]="label" (click)="moreMenu=false">
             <p>Add label</p>
         </button>
+        <button mat-menu-item (click)="MoveIntoTrash()">
+            <p>Delete Note</p>
+        </button>
     </mat-menu>  
+    <mat-menu #label="matMenu" opened="true" class="label-subMenu" yPosition="below">
+        <h3>Label note</h3>
+        <div class="input">
+            <input matInput placeholder="Enter label name" class="input">
+            <mat-icon>search</mat-icon>
+        </div>
+        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+    </mat-menu> 
 </div>

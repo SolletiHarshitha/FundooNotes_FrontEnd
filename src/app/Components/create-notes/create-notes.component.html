@@ -4,17 +4,25 @@
             <input matInput placeholder="Take a note..." class="input">
         </mat-card-title>
         <div>
-            <mat-icon class="material-icons-outlined">check_box</mat-icon>
-            <mat-icon class="material-icons-outlined">brush</mat-icon>
-            <mat-icon class="material-icons-outlined">image</mat-icon>
+            <button mat-icon-button class="note-icon">
+                <mat-icon class="material-icons-outlined" matTooltip="New list">check_box</mat-icon>
+            </button>
+            <button mat-icon-button class="note-icon">
+                <mat-icon class="material-icons-outlined" matTooltip="New note with drawing">brush</mat-icon>
+            </button>
+            <button mat-icon-button class="note-icon">
+                <mat-icon class="material-icons-outlined" matTooltip="New note with image">image</mat-icon>
+            </button>
         </div>
     </mat-card>
     <mat-card class="hiddenCard" *ngIf="show" [style.background-color]="noteColor" (click)="Color()">
         <form [formGroup]="CreateNoteForm">
             <mat-card-title class="header">
                 <input matInput placeholder="Title" formControlName="title" class="input" [ngStyle]="{'background':noteColor}">
-                <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
-                <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
+                <button mat-icon-button class="note -icon">
+                    <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
+                    <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
+                </button>
             </mat-card-title>
             <mat-card-content>
                 <textarea matInput cdkTextareaAutosize placeholder="Take a note..." formControlName="description" class=" input textarea" [style.background-color]="noteColor"></textarea>

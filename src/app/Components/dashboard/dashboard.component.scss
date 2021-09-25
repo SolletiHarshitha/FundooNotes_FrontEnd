@@ -116,6 +116,13 @@ mat-sidenav-content{
   padding-left: 100px;
 }
 
+.toolbar-icon:hover{
+  background-color: #dddddd;
+}
+
+.navigate-icon :visited{
+  background-color: #feefc3;
+}
 /*::ng-deep .mat-sidenav-container :hover{
   //width: 300px;
   //background-color: #f4f4f4;

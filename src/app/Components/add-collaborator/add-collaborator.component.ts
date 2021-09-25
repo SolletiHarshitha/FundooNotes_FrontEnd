@@ -47,7 +47,7 @@ export class AddCollaboratorComponent implements OnInit {
       this.snackBar.open(`${result.message}`, '', {
         verticalPosition:"bottom",
         horizontalPosition:"left",
-        duration:5000
+        duration:3000
       });
       this.ngOnInit();
       this.data.email="";
@@ -61,7 +61,7 @@ export class AddCollaboratorComponent implements OnInit {
       this.snackBar.open(`${result.message}`, '', {
         verticalPosition:"bottom",
         horizontalPosition:"left",
-        duration:5000});
+        duration:3000});
       this.ngOnInit()
     })
   }

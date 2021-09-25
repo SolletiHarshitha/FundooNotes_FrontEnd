@@ -14,6 +14,7 @@ import { AddCollaboratorComponent } from '../add-collaborator/add-collaborator.c
 export class NoteIconsComponent implements OnInit {
   archive : any;
   email: string = "";
+  moreMenu = false;
 
   noteColor: any = "white";
   colorsList: any = [] = [
@@ -105,5 +106,16 @@ export class NoteIconsComponent implements OnInit {
           duration:5000});
       })
     }
+  }
+
+  MoveIntoTrash(){
+    this.noteService.MoveIntoTrash(this.notes.noteId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:5000});
+    })
   }
 }

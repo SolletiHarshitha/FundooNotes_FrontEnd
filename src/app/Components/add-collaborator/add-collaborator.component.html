@@ -20,15 +20,15 @@
     </div>
     <div class="collaborator">
         <form [formGroup]="collaboratorForm">
-        <div>
+        
         <mat-icon class="material-icons">person_add</mat-icon>
-        </div>
+        
         <div>
         <input matInput class="coll_name" [(ngModel)]="data.email"placeholder="Person or email to share with" formControlName="collaboratorEmail">
         <mat-error *ngIf="collaboratorForm.hasError('email', 'collaboratorEmail')">Invalid Email</mat-error>
         </div>
         <div>
-        <button mat-icon-button>
+        <button mat-icon-button class="done-icon">
             <mat-icon (click)="AddCollaborator()">done</mat-icon>
         </button> 
         </div>

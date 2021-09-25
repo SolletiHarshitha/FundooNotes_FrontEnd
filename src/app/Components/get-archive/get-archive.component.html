@@ -1,6 +1,6 @@
-<<div class="archiveNotes">
+<div class="archiveNotes">
     <mat-card class="noteCard" *ngFor="let note of notes" [ngStyle]="{'background-color':note.color}">
-        <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin">push_pin</mat-icon>
+        <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin" matTootltip="Pin note">push_pin</mat-icon>
         
         <img src="{{note.image}}" alt="" (click)="OpenEditNote(note)">
         <div class="title" (click)="OpenEditNote(note)">
