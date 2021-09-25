@@ -1,0 +1,28 @@
+.noteCard{
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 -10px;
+    height: fit-content;
+    word-wrap: break-word;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p{
+        font-size: 15px;
+    }
+}
+
+.archiveNotes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.pinIcon{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}

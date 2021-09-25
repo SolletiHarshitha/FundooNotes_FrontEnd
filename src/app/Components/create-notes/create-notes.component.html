@@ -1,0 +1,34 @@
+<div class="mainContainer">
+    <mat-card class="displayCard" *ngIf="!show" (click)="show=!show">
+        <mat-card-title>
+            <input matInput placeholder="Take a note..." class="input">
+        </mat-card-title>
+        <div>
+            <mat-icon class="material-icons-outlined">check_box</mat-icon>
+            <mat-icon class="material-icons-outlined">brush</mat-icon>
+            <mat-icon class="material-icons-outlined">image</mat-icon>
+        </div>
+    </mat-card>
+    <mat-card class="hiddenCard" *ngIf="show" [style.background-color]="noteColor" (click)="Color()">
+        <form [formGroup]="CreateNoteForm">
+            <mat-card-title class="header">
+                <input matInput placeholder="Title" formControlName="title" class="input" [ngStyle]="{'background':noteColor}">
+                <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
+                <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
+            </mat-card-title>
+            <mat-card-content>
+                <textarea matInput cdkTextareaAutosize placeholder="Take a note..." formControlName="description" class=" input textarea" [style.background-color]="noteColor"></textarea>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="footer">
+                    <div class="icons">
+                        <app-note-icons [style.background-color]="noteColor"></app-note-icons>
+                    </div>
+                    <div class="button">
+                        <button mat-flat-button (click)="AddNote();show=!show">Close</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

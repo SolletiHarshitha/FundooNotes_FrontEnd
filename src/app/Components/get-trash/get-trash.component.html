@@ -1,0 +1,24 @@
+<div class="emptyTrash">
+    <p>Notes in Trash are deleted after 7 days.</p>
+    <button mat-button color="primary" (click)="EmptyTrash()">Empty Trash</button>
+</div>
+<div class="trashNotes">
+    <mat-card class="noteCard" *ngFor="let note of notes">
+        <div class="title">
+            <mat-card-title>
+                <p>{{ note.title }}</p>
+            </mat-card-title>
+        </div>
+        <div class="description">
+            <mat-card-content>{{ note.description }}</mat-card-content>
+        </div>
+        <div class="icons">
+            <button mat-icon-button>
+                <mat-icon (click)="deleteForever(note)">delete_forever</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon (click)= "restore(note)">restore_from_trash</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+</div>

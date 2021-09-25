@@ -1,0 +1,48 @@
+.emptyTrash{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+    p{
+        margin-top: 10px;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-style: italic;
+    }
+    button{
+        margin-left: 20px;
+    }
+}
+
+.trashNotes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.noteCard{
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 -10px;
+    height: fit-content;
+    width: 20%;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p{
+        font-size: 15px;
+    }
+}
+
+.icons{
+    mat-icon{
+        margin: 0 5px;
+        color: rgb(80, 79, 79);
+        font-size: 18px;
+    }
+}

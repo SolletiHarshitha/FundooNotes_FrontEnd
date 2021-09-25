@@ -1,0 +1,40 @@
+<div class="collaboratorContainer">
+    <h2 mat-dialog-title>Collaborators</h2>
+    <mat-divider></mat-divider>
+    <div>
+        <div class="owner">
+            <mat-icon>account_circle</mat-icon>
+        <div class="details">
+            <mat-label>{{ userName }}(owner)</mat-label>
+            <mat-label>{{ email }}</mat-label>
+        </div>
+    </div>
+    <div class="collaborator" *ngFor="let collaborator of collaborators">
+        <mat-icon class="material-icons">person_add</mat-icon>
+        <mat-label>{{ collaborator.receiverMail }}</mat-label>
+        <button mat-icon-button>
+            <mat-icon (click)="DeleteCollaborator(collaborator)">close</mat-icon>
+        </button>
+    </div>
+    <div class="collaborator">
+        <form [formGroup]="collaboratorForm">
+            <div>
+        <mat-icon class="material-icons">person_add</mat-icon>
+    </div>
+    <div>
+        <input matInput class="coll_name" [(ngModel)]="data.email"placeholder="Person or email to share with" formControlName="collaboratorEmail">
+        <mat-error *ngIf="collaboratorForm.hasError('email', 'collaboratorEmail')">Invalid Email</mat-error>
+    </div>
+    <div>
+        <button mat-icon-button>
+            <mat-icon (click)="AddCollaborator()">done</mat-icon>
+        </button> 
+    </div>
+        </form>
+    </div>
+    </div>
+    <div class="button">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button mat-dialog-close>Save</button>
+    </div>
+</div>

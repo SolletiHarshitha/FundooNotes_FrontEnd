@@ -1,0 +1,23 @@
+<<div class="archiveNotes">
+    <mat-card class="noteCard" *ngFor="let note of notes" [ngStyle]="{'background-color':note.color}">
+        <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin">push_pin</mat-icon>
+        
+        <img src="{{note.image}}" alt="" (click)="OpenEditNote(note)">
+        <div class="title" (click)="OpenEditNote(note)">
+            <mat-card-title>
+                <p>{{ note.title }}</p>
+            </mat-card-title>
+        </div>
+        <div class="description" (click)="OpenEditNote(note)">
+            <mat-card-content>{{ note.description }}</mat-card-content>
+        </div>
+        <div class="reminder" *ngIf="note.reminder!=null">
+            <mat-icon>schedule</mat-icon>
+            <mat-label>{{note.remainder}}</mat-label>
+            <mat-icon (click)="DeleteReminder(note)">close</mat-icon>
+        </div>
+        <div class="icons">
+            <app-get-note-icons [notes]=note></app-get-note-icons>
+        </div>
+    </mat-card>
+</div>

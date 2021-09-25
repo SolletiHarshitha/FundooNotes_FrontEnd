@@ -1,0 +1,101 @@
+<div class="iconBar">
+    <button mat-icon-button class="toolbar-icon" aria-label="add_alert icon">
+        <mat-icon class="material-icons-outlined" [matMenuTriggerFor]="reminder">add_alert</mat-icon>
+    </button>
+    <mat-menu #reminder="matMenu" class="reminderMenu">
+        <p class="reminderHeader">Reminder: </p>
+        <button mat-menu-item class="reminderOption"> 
+            <p>Later today 8:00PM</p>
+        </button>
+        <button mat-menu-item>
+            <p>Tomorrow 8:00AM</p>
+        </button>
+        <button mat-menu-item>
+            <p>Next week, Mon,8:00AM</p>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>access_time</mat-icon>
+            Pick date & time
+        </button>
+        <button mat-menu-item>
+            <mat-icon>place</mat-icon>
+            Pick place
+        </button>
+    </mat-menu>
+    <mat-menu #datetime="matMenu" class="dateTime" [overlapTrigger]="false">
+        <button mat-menu-item>
+            <mat-icon >keyboard_backspace</mat-icon>
+            Pick date & time
+        </button>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input matInput [matDatepicker]="picker" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker yPosition="below"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="timePicker" appearance="fill" [matMenuTriggerFor]="time">
+            <input matInput placeholder="Select time">
+            <button matSuffix mat-icon-button>
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+        </mat-form-field>
+    </mat-menu>
+    <mat-menu #time="matMenu" opened="true" yPosition="below">
+        <button mat-menu-item>
+            <p>Morning 8:00AM</p>
+        </button>
+        <button mat-menu-item>
+            <p>Afternoon 1:00PM</p>
+        </button>
+        <button mat-menu-item>
+            <p>Evening 6:00PM</p>
+        </button>
+        <button mat-menu-item>
+            <p>Night 8:00PM</p>
+        </button>
+    </mat-menu>
+    <button mat-icon-button class="toolbar-icon" aria-label="person_add icon" (click)="OpenCollaborator()">
+        <mat-icon class="material-icons-outlined">person_add</mat-icon>
+    </button>
+    <button mat-icon-button class="toolbar-icon" aria-label="color_lens icon">
+        <mat-icon class="material-icons-outlined">color_lens</mat-icon>
+    </button>
+    <mat-menu #color="matMenu" class="colorMenu" yPosition="above">
+        <div class="menu">
+            <div class="row" *ngFor="let color of colorsList;let i=index">
+                <button mat-icon-button class="color-icon" [ngStyle]="{ 'background-color': color.color }" 
+                matTooltip="{{colorsList[i].toolTip}}" (click)="changecolor(colorsList[i].color)">
+                    <mat-icon *ngIf="colorsList[i].icon">done</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-menu>
+    <button mat-icon-button class="toolbar-icon" aria-label="image icon">
+        <mat-icon class="material-icons-outlined">image</mat-icon>
+    </button>
+    <button mat-icon-button class="toolbar-icon" aria-label="archive icon">
+        <mat-icon class="material-icons-outlined" *ngIf="!archive" (click)="archive=true;isArchive()">archive</mat-icon>
+        <mat-icon class="material-icons-outlined" *ngIf="archive" (click)="archive=false;isArchive()">unarchive</mat-icon>
+    </button>
+    <button mat-icon-button class="toolbar-icon" aria-label="more_vert icon">
+        <mat-icon class="material-icons" [matMenuTriggerFor]="!moreMenu ? more : label">more_vert</mat-icon>
+    </button>
+    <mat-menu #more="matMenu" class="moreMenu">
+        <button mat-menu-item [matMenuTriggerFor]="label" (click)="moreMenu=false">
+            <p>Add label</p>
+        </button>
+        <button mat-menu-item (click)="MoveIntoTrash()">
+            <p>Delete Note</p>
+        </button>
+    </mat-menu>  
+    <mat-menu #label="matMenu" opened="true" class="label-subMenu">
+        <h3>Label note</h3>
+        <div class="input">
+            <input matInput placeholder="Enter label name" class="input">
+            <mat-icon>search</mat-icon>
+        </div>
+        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+    </mat-menu>
+</div>
+

@@ -1,0 +1,25 @@
+.toolbar-icon{
+    margin: 0 8px;
+    color: rgb(80, 79, 79);
+}
+.location{
+    display: flex;
+    flex-direction: column;
+}
+.reminderHeader{
+    padding-left: 20px;
+    padding-top: 10px;
+}
+mat-icon{
+    font-size: 18px;
+}
+.colorMenu{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.color-icon{
+    display: flex;
+    flex-direction: column;
+    
+}
