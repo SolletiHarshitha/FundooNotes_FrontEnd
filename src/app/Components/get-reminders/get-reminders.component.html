@@ -1,12 +1,20 @@
 <div class="reminderNotes">
-    <mat-card class="noteCard" *ngFor="let note of notes">
+    <mat-card class="noteCard" *ngFor="let note of notes" [ngStyle]="{'background-color':note.color}" (click)="OpenEditNote(note)">
+        <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin">push_pin</mat-icon>
+        <mat-icon class="pinIcon" *ngIf="note.pin">push_pin</mat-icon>
+        <img src="{{note.image}}" alt="">
         <div class="title">
-            <mat-card-title>
+            <mat-card-title (click)="OpenEditNote(note)">
                 <p>{{ note.title }}</p>
             </mat-card-title>
         </div>
         <div class="description">
-            <mat-card-content>{{ note.description }}</mat-card-content>
+            <mat-card-content (click)="OpenEditNote(note)">{{ note.description }}</mat-card-content>
+        </div>
+        <div class="reminder" *ngIf="note.reminder!=null">
+            <mat-icon>schedule</mat-icon>
+            <mat-label>{{note.remainder}}</mat-label>
+            <mat-icon (click)="DeleteReminder(note)">close</mat-icon>
         </div>
         <div class="icons">
             <app-get-note-icons [notes]=note></app-get-note-icons>

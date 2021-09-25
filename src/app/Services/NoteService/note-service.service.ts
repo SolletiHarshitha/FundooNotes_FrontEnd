@@ -83,4 +83,30 @@ export class NoteServiceService {
   MoveIntoTrash(noteId: number){
     return this.httpService.delete(`${environment.baseUrl}/api/Note/DeleteNote?noteId=${noteId}`, true, this.header);
   }
+
+  AddReminder(noteId:any, reminder:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/RemindMe?noteId=${noteId}&reminder=${reminder}`,null, true, this.header);
+  }
+
+  DeleteReminder(noteId:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/DeleteReminder?noteId=${noteId}`,null, true, this.header);
+  }
+
+  Color(noteId: any, color: any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/Color?noteId=${noteId}&color=${color}`,null, true, this.header);
+  }
+
+  PinNote(noteId:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/PinNote?noteId=${noteId}`,null, true, this.header);
+  }
+
+  UnpinNote(noteId:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/UnPinNote?noteId=${noteId}`,null, true, this.header);
+  }
+  AddImage(noteId:any, image:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/AddImage?noteId=${noteId}`,null, true, this.header);
+  }
+  RemoveImage(noteId:any){
+    return this.httpService.put(`${environment.baseUrl}/api/Note/RemoveImage?noteId=${noteId}`,null, true, this.header);
+  }
 }

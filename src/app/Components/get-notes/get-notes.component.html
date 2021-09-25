@@ -1,5 +1,4 @@
 <div class="noteContainer">
-    <div class="note">PINNED</div>
     <mat-card class="noteCard" *ngFor="let note of notes" [ngStyle]="{'background-color': note.color}">
         <mat-icon *ngIf="note.pin">pin</mat-icon>
         <div class="title" (click)="OpenNote(note)">

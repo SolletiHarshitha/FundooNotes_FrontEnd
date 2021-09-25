@@ -17,9 +17,11 @@ export class DashboardComponent implements OnInit {
   view = false;
   name = "";
   email = "";
-  getNotes="Notes";
+  navButton="Notes";
   labels: any = [];
+  labelName: any;
   labelNote:any;
+  value="side";
   
 
   constructor(
@@ -53,9 +55,9 @@ export class DashboardComponent implements OnInit {
 
   OpenEditLabel(): void {
     const dialogRef = this.dialog.open(EditLabelComponent, {
-      width: '350px',
+      width: 'auto',
       height: 'fit-content',
-      data: {labels: this.labels, email: this.email}
+      data: {labels: this.labels, labelName: this.labelName}
     });
 
     dialogRef.afterClosed().subscribe(result => {

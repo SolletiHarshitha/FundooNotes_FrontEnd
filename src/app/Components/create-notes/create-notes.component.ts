@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NoteIconsComponent } from '../note-icons/note-icons.component';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class CreateNotesComponent implements OnInit {
     
   ) { }
 
+  @ViewChild(NoteIconsComponent) public noteIcons: any;
+
   ngOnInit(): void {
     this.CreateNoteForm = new FormGroup({
       title: new FormControl(),
@@ -34,6 +37,9 @@ export class CreateNotesComponent implements OnInit {
     const params = {
       title : this.CreateNoteForm.value.title,
       description : this.CreateNoteForm.value.description,
+      pin : this.isPin,
+      archive : this.noteIcons.archive,
+      color : this.noteIcons.noteColor
     }
     this.noteService.CreateNote(params)
     .subscribe((result:any)=>{
@@ -54,5 +60,10 @@ export class CreateNotesComponent implements OnInit {
         });
       }
     })
+  }
+
+  Color(){
+    var cardColor = document.getElementsByClassName('hiddenCard');
+    this.noteColor = this.noteIcons.noteColor;
   }
 }

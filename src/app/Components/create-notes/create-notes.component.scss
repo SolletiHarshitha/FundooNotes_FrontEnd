@@ -1,8 +1,14 @@
 .displayCard{
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 550px;
     margin: 32px auto 16px auto;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    .material-icons-outlined{
+        margin: 0 10px;
+        opacity: 0.7;
+    }
 }
 .hiddenCard{
     display: flex;
@@ -11,6 +17,9 @@
     width: 550px;
     margin: 32px auto 16px auto;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    mat-icon{
+        cursor: pointer;
+    }
 }
 .header{
     display: flex;

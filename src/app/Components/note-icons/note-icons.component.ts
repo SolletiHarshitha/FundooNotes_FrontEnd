@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddCollaboratorComponent } from '../add-collaborator/add-collaborator.component';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { Input } from '@angular/core';
 })
 export class NoteIconsComponent implements OnInit {
   archive : any;
+  email: string = "";
 
   noteColor: any = "white";
   colorsList: any = [] = [
@@ -55,12 +58,24 @@ export class NoteIconsComponent implements OnInit {
   constructor(
     private noteService:NoteServiceService,
     public snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
   }
 
   @Input() notes: any;
+
+  OpenCollaborator(): void {
+    const dialogRef = this.dialog.open(AddCollaboratorComponent, {
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.email = result;
+    });
+  }
 
   changecolor(color:any){
     this.noteColor = color;

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NoteServiceService } from 'src/app/Services/NoteService/note-service.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-note',
@@ -8,10 +10,13 @@ import { NoteServiceService } from 'src/app/Services/NoteService/note-service.se
 })
 export class EditNoteComponent implements OnInit {
   isPin = false;
-  data: any;
+
 
   constructor(
-    private noteService: NoteServiceService
+    private noteService: NoteServiceService,
+    public dialogRef: MatDialogRef<EditNoteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {

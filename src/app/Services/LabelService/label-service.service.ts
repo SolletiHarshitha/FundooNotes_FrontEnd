@@ -21,9 +21,9 @@ export class LabelServiceService {
     return this.httpService.get(`${environment.baseUrl}/api/Label/GetLabelByUserId?userId=${userId}`, true, this.header);
   }
 
-  GetNotesByLabel(labelId: any){
+  GetNotesByLabel(labelName: any){
     var userId = this.user.UserId;
-    return this.httpService.get(`${environment.baseUrl}/api/Label/GetNoteByLabel?userId=${userId}`, true, this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Label/GetNoteByLabel?userId=${userId}&&labelName=${labelName}`, true, this.header);
   }
 
   GetLabelsByNote(noteId: number){
@@ -39,6 +39,20 @@ export class LabelServiceService {
   }
 
   DeleteLabel(label: any){
-    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator/DeleteLabel`, true, this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/Label/DeleteLabel`, true, this.header);
+  }
+
+  EditLabel(label:any){
+    var userId = this.user.UserId;
+    const params = {
+      LabelId:label.labelId,
+      LabelName:label.name,
+      UserId:this.user.UserId
+    }
+    return this.httpService.put(`${environment.baseUrl}/api/Label/EditLabel`, null, true, this.header);
+  }
+  
+  RemoveLabel(labelId: any){
+    return this.httpService.delete(`${environment.baseUrl}/api/Label/RemoveLabel?labelId=${labelId}`, true, this.header);
   }
 }
