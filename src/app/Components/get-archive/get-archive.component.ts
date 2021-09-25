@@ -3,6 +3,7 @@ import { NoteServiceService } from 'src/app/Services/NoteService/note-service.se
 import { MatDialog } from '@angular/material/dialog';
 import { EditNoteComponent } from '../edit-note/edit-note.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 
 @Component({
   selector: 'app-get-archive',
@@ -15,11 +16,20 @@ export class GetArchiveComponent implements OnInit {
   constructor(
     private noteService:NoteServiceService,
     private dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dataService: DataServiceService
   ) { }
 
   ngOnInit(): void {
     this.GetArchive();
+
+    this.dataService.currentData
+    .subscribe((result:boolean)=>{
+      if(result){
+        this.GetArchive();
+        this.dataService.changeMessage(false);
+      }
+    })
   }
 
   GetArchive(){
@@ -30,6 +40,21 @@ export class GetArchiveComponent implements OnInit {
       console.log(this.notes);
     })
   }
+
+  pinnote(noteId:any){
+    this.noteService.PinNote(noteId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:3000
+      });
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
+
   OpenEditNote(note:any): void{
     let dialogRef = this.dialog.open(EditNoteComponent, {
       height: 'fit-content',
@@ -49,9 +74,11 @@ export class GetArchiveComponent implements OnInit {
       this.snackBar.open(`${result.message}`, '', {
         verticalPosition:"bottom",
         horizontalPosition:"left",
-        duration:5000
+        duration:3000
       });
+      this.dataService.changeMessage(result.status);
     })
     this.ngOnInit();
   }
+
 }

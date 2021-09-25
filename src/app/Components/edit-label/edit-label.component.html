@@ -3,28 +3,37 @@
     <div class="textLabel">
         <div>
             <button mat-icon-button (click)="add=!add">
-                <mat-icon *ngIf=!add>close</mat-icon>
+                <mat-icon *ngIf=!add matTooltip="Cancel">close</mat-icon>
             <mat-icon *ngIf=add>add_circle_outline</mat-icon>
             </button> 
         </div>
-        <div> 
-            <input matInput placeholder="Create new label">
+        <div class="input"> 
+            <input matInput placeholder="Create new label" [(ngModel)]="data.name">
         </div>
-        <button mat-icon-button>
-            <mat-icon *ngIf=!add (click)="AddLabel(data)">done</mat-icon>
-        </button> 
+        <div>
+            <button mat-icon-button>
+                <mat-icon *ngIf="data.name" (click)="AddLabel(data)" matTooltip="Create label">done</mat-icon>
+            </button> 
+        </div>
     </div>
-    <div class="labels" *ngFor="let label of labels">
-        <button mat-icon-button (click)="delete=!delete">
-            <mat-icon *ngFor=!delete>label</mat-icon>
-            <mat-icon *ngFor=delete (click)="DeleteLabel(label)">delete</mat-icon>
-        </button>
-        <div class="text" *ngFor="!update">{{ label.labelName }}</div>
-        <input matInput *ngFor="update" placeholder="Title" class="input" value="{{ label.labelName }}">
+    <div class="labels" *ngFor="let label of data.labels">
+        <div class="inputField">
+            <button mat-icon-button (click)="delete=!delete">
+                <mat-icon *ngIf=!delete (mouseover)="delete=true">label</mat-icon>
+                <mat-icon *ngIf=delete (mouseleave)="delete=false" (click)="DeleteLabel(label)" matTooltip="Delete label">delete</mat-icon>
+            </button>
+        
+        
+         <div class="text" *ngIf="!update">{{ label.labelName }}</div> 
+         <input matInput *ngIf="update" placeholder="Title" class="input" value="{{ label.labelName }}">
+        </div>
+    <div>
         <button mat-icon-button (click)="update=!update">
-            <mat-icon *ngFor="!update">edit</mat-icon>
-            <mat-icon *ngFor="update">done</mat-icon>
+            <mat-icon *ngIf="!update" matTooltip="Rename label" (click)="EditLabel(label)">edit</mat-icon>
+            <mat-icon *ngIf="update">done</mat-icon>
         </button>
+    </div>
+        
     </div>
     <mat-divider></mat-divider>
     <div class="button">

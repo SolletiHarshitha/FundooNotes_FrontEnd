@@ -3,6 +3,7 @@ import { CollaboratorServiceService } from 'src/app/Services/CollaboratorService
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 
 @Component({
   selector: 'app-add-collaborator',
@@ -15,13 +16,15 @@ export class AddCollaboratorComponent implements OnInit {
   email = this.user.Email;
   collaborators: any;
   collaboratorForm!: FormGroup;
+  status!:boolean
 
   constructor(
     private collaboratorService:CollaboratorServiceService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<AddCollaboratorComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dataService: DataServiceService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +32,14 @@ export class AddCollaboratorComponent implements OnInit {
       collaboratorEmail: new FormControl('',[Validators.email])
     }),
     this.getCollaborators(this.data);
+
+    this.dataService.currentData
+    .subscribe((result:boolean)=>{
+      if(result){
+        this.getCollaborators(this.data);
+        this.dataService.changeMessage(false);
+      }
+    })
   }
 
   getCollaborators(data: any){
@@ -49,9 +60,10 @@ export class AddCollaboratorComponent implements OnInit {
         horizontalPosition:"left",
         duration:3000
       });
-      this.ngOnInit();
       this.data.email="";
+      this.dataService.changeMessage(result.status);
     })
+    this.ngOnInit();
   }
 
   DeleteCollaborator(collaborator:any){
@@ -61,8 +73,10 @@ export class AddCollaboratorComponent implements OnInit {
       this.snackBar.open(`${result.message}`, '', {
         verticalPosition:"bottom",
         horizontalPosition:"left",
-        duration:3000});
-      this.ngOnInit()
+        duration:3000
+      });
+      this.dataService.changeMessage(result.status);
     })
+    this.ngOnInit();
   }
 }

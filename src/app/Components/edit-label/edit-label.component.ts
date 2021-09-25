@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LabelServiceService } from 'src/app/Services/LabelService/label-service.service';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 
 @Component({
   selector: 'app-edit-label',
@@ -18,26 +19,49 @@ export class EditLabelComponent implements OnInit {
     private labelService: LabelServiceService,
     public dialogRef: MatDialogRef<EditLabelComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
-    public snackBar:MatSnackBar
+    public snackBar:MatSnackBar,
+    private dataService: DataServiceService
   ) { }
 
   ngOnInit(): void {
-  }
-
-  AddLabel(label: any){
-    this.labelService.AddLabel(label.labelName)
-    .subscribe((result:any)=>{
-      console.log(result);
+    this.dataService.currentData
+    .subscribe((result:boolean)=>{
+      if(result){
+        this.dataService.changeMessage(false);
+      }
     })
   }
+
+  AddLabel(labeldata:any){
+    this.labelService.AddLabel(labeldata.name)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.data.name="";
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
+
   DeleteLabel(label:any){
     this.labelService.DeleteLabel(label.labelName)
     .subscribe((result:any)=>{
       console.log(result);
+      this.dataService.changeMessage(result.status);
     })
+    this.ngOnInit();
   }
+
+  EditLabel(labeldata: any){
+    this.labelService.EditLabel(labeldata)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
+
   done(){
-    if(this.data!=null)
+    if(this.data.name!=null)
     {
       this.AddLabel(this.data);
     }
