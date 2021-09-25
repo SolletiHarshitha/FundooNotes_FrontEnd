@@ -34,7 +34,7 @@ export class GetNotesComponent implements OnInit {
   OpenNote(note:any){
     let dialogRef = this.dialog.open(EditNoteComponent, {
       height: 'fit-content',
-      width: 'fit-content',
+      width: '40%',
       data: {note}
     });
 

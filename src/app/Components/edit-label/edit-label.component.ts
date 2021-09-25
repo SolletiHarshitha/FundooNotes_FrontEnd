@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { LabelServiceService } from 'src/app/Services/LabelService/label-service.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class EditLabelComponent implements OnInit {
 
   constructor(
     private labelService: LabelServiceService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<EditLabelComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
+    public snackBar:MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -32,5 +35,11 @@ export class EditLabelComponent implements OnInit {
     .subscribe((result:any)=>{
       console.log(result);
     })
+  }
+  done(){
+    if(this.data!=null)
+    {
+      this.AddLabel(this.data);
+    }
   }
 }

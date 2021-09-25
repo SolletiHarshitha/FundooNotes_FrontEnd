@@ -91,7 +91,7 @@ export class GetNoteIconsComponent implements OnInit {
 
   OpenCollaborator(): void {
     const dialogRef = this.dialog.open(AddCollaboratorComponent, {
-      width: '600px',
+      width: '40%',
       data: {noteId: this.notes.noteId, email: this.email}
     });
 

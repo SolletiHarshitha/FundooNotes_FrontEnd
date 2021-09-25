@@ -32,7 +32,7 @@ export class LabelServiceService {
 
   AddLabel(label: any){
     const params = {
-      LabelName: label,
+      LabelName: label.labelName,
       UserId: this.user.UserId
     }
     return this.httpService.post(`${environment.baseUrl}/api/Label/CreateLabel`,params, true, this.header);
@@ -51,7 +51,7 @@ export class LabelServiceService {
     }
     return this.httpService.put(`${environment.baseUrl}/api/Label/EditLabel`, null, true, this.header);
   }
-  
+
   RemoveLabel(labelId: any){
     return this.httpService.delete(`${environment.baseUrl}/api/Label/RemoveLabel?labelId=${labelId}`, true, this.header);
   }

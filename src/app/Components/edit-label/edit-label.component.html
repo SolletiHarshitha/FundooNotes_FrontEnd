@@ -1,14 +1,18 @@
 <div class="editLabel">
     <h3>Edit labels</h3>
     <div class="textLabel">
-        <button mat-icon-button (click)="add=!add">
-            <mat-icon *ngIf=!add>close</mat-icon>
+        <div>
+            <button mat-icon-button (click)="add=!add">
+                <mat-icon *ngIf=!add>close</mat-icon>
             <mat-icon *ngIf=add>add_circle_outline</mat-icon>
-        </button>
-        <input matInput placeholder="Create new label">
+            </button> 
+        </div>
+        <div> 
+            <input matInput placeholder="Create new label">
+        </div>
         <button mat-icon-button>
-            <mat-icon *ngIf=add (click)="AddLabel(data)">done</mat-icon>
-        </button>
+            <mat-icon *ngIf=!add (click)="AddLabel(data)">done</mat-icon>
+        </button> 
     </div>
     <div class="labels" *ngFor="let label of labels">
         <button mat-icon-button (click)="delete=!delete">
@@ -24,6 +28,6 @@
     </div>
     <mat-divider></mat-divider>
     <div class="button">
-        <button mat-button mat-dialog-close style="float: right;">Done</button>
+        <button mat-button mat-dialog-close style="float: right;" (click)="done()">Done</button>
     </div>
 </div>
