@@ -32,8 +32,22 @@ export class GetRemindersComponent implements OnInit {
     })
   }
 
-  pinnote(noteId:any){
+  pinNote(noteId:any){
     this.noteService.PinNote(noteId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:3000
+      });
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
+
+  unpinNote(noteId:any){
+    this.noteService.UnpinNote(noteId)
     .subscribe((result:any)=>{
       console.log(result);
       this.snackBar.open(`${result.message}`, '', {

@@ -36,6 +36,7 @@ import { AddCollaboratorComponent } from './Components/add-collaborator/add-coll
 import { EditNoteComponent } from './Components/edit-note/edit-note.component';
 import { EditLabelComponent } from './Components/edit-label/edit-label.component';
 import { GetNotesByLabelComponent } from './Components/get-notes-by-label/get-notes-by-label.component';
+import { AddImageComponent } from './Components/add-image/add-image.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { GetNotesByLabelComponent } from './Components/get-notes-by-label/get-no
     AddCollaboratorComponent,
     EditNoteComponent,
     GetNotesByLabelComponent,
-    EditLabelComponent
+    EditLabelComponent,
+    AddImageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

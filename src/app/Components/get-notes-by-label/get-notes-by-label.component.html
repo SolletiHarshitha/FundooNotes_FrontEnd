@@ -1,7 +1,7 @@
 <div class="noteContainer">
     <mat-card class="noteCard" *ngFor="let note of notes" [ngStyle]="{'background-color':note.color}" (click)="OpenEditNote(note)">
-        <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin" (click)="pinnote(note.noteId)">push_pin</mat-icon>
-        <mat-icon class="pinIcon" *ngIf="note.pin">push_pin</mat-icon>
+        <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin" (click)="pinNote(note.noteId)">push_pin</mat-icon>
+        <mat-icon class="pinIcon" *ngIf="note.pin" (click)="unpinNote(note.noteId)">push_pin</mat-icon>
         <img src="{{note.image}}" alt="">
         <div class="title">
             <mat-card-title (click)="OpenEditNote(note)">

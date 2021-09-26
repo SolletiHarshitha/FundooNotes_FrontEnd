@@ -4,17 +4,21 @@ import { Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCollaboratorComponent } from '../add-collaborator/add-collaborator.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
+import { AddImageComponent } from '../add-image/add-image.component';
 @Component({
   selector: 'app-get-note-icons',
   templateUrl: './get-note-icons.component.html',
   styleUrls: ['./get-note-icons.component.scss']
 })
 export class GetNoteIconsComponent implements OnInit {
-  archive=false;
+  archive:any;
   email: string = "";
   moreMenu = false;
   remindMe = false;
+  file!: File;
+  image:any;
+
   
   noteColor: any = "white";
   colorsList: any = [] = [
@@ -59,10 +63,18 @@ export class GetNoteIconsComponent implements OnInit {
   constructor(
     private noteService:NoteServiceService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dataService: DataServiceService
   ) { }
 
   ngOnInit(): void {
+    //this.getLabel();
+    this.dataService.currentData
+    .subscribe((result: any)=>{
+      if(result){
+        this.dataService.changeMessage(false);
+      }
+    })
   }
 
   @Input() notes: any;
@@ -108,6 +120,7 @@ export class GetNoteIconsComponent implements OnInit {
       col.icon = col.color == color ? true : false;
     }
   }
+
   MoveIntoTrash(){
     this.noteService.MoveIntoTrash(this.notes.noteId)
     .subscribe((result:any)=>{
@@ -118,4 +131,17 @@ export class GetNoteIconsComponent implements OnInit {
         duration:5000});
     })
   }
+
+  OpenImage(): void {
+    const dialogRef = this.dialog.open(AddImageComponent, {
+      width: '40%',
+      data: {noteId: this.notes.noteId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.email = result;
+    });
+  }
+
 }

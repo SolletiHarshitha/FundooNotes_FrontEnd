@@ -1,4 +1,6 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpServiceService } from '../HttpService/http-service.service';
 
@@ -28,9 +30,14 @@ export class NoteServiceService {
     return this.httpService.post(`${environment.baseUrl}/api/Note/AddNote`, params, true, this.header);
   }
 
-  GetNotes(){
+  GetPinNotes(){
     var userId = this.user.UserId;
-    return this.httpService.get(`${environment.baseUrl}/api/Note/GetNotes?userId=${userId}`, true, this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Note/GetPinNotes?userId=${userId}`, true, this.header);
+  }
+
+  GetUnpinNotes(){
+    var userId = this.user.UserId;
+    return this.httpService.get(`${environment.baseUrl}/api/Note/GetUnpinNotes?userId=${userId}`, true, this.header);
   }
 
   GetArchive(){
@@ -103,8 +110,11 @@ export class NoteServiceService {
   UnpinNote(noteId:any){
     return this.httpService.put(`${environment.baseUrl}/api/Note/UnPinNote?noteId=${noteId}`,null, true, this.header);
   }
-  AddImage(noteId:any, image:any){
-    return this.httpService.put(`${environment.baseUrl}/api/Note/AddImage?noteId=${noteId}`,null, true, this.header);
+  AddImage(noteId:any, file: any): Observable<any>{ 
+    const formData = new FormData();
+    formData.append('file',file,file.name);
+    console.log(formData);
+    return this.httpService.put(`${environment.baseUrl}/api/Note/AddImage?noteId=${noteId}`,formData, true, this.header);
   }
   RemoveImage(noteId:any){
     return this.httpService.put(`${environment.baseUrl}/api/Note/RemoveImage?noteId=${noteId}`,null, true, this.header);

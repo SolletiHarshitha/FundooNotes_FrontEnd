@@ -41,7 +41,7 @@ export class GetArchiveComponent implements OnInit {
     })
   }
 
-  pinnote(noteId:any){
+  pinNote(noteId:any){
     this.noteService.PinNote(noteId)
     .subscribe((result:any)=>{
       console.log(result);

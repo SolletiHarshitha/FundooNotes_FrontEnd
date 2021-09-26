@@ -24,6 +24,7 @@ export class EditLabelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data);
     this.dataService.currentData
     .subscribe((result:boolean)=>{
       if(result){
@@ -33,7 +34,8 @@ export class EditLabelComponent implements OnInit {
   }
 
   AddLabel(labeldata:any){
-    this.labelService.AddLabel(labeldata.name)
+    console.log(labeldata);
+    this.labelService.AddLabel(labeldata.labelName)
     .subscribe((result:any)=>{
       console.log(result);
       this.data.name="";
@@ -52,6 +54,7 @@ export class EditLabelComponent implements OnInit {
   }
 
   EditLabel(labeldata: any){
+    console.log(labeldata);
     this.labelService.EditLabel(labeldata)
     .subscribe((result:any)=>{
       console.log(result);

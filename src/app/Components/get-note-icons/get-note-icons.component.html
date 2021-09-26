@@ -74,12 +74,12 @@
             <div class="row" *ngFor="let color of colorsList;let i=index">
                 <button mat-icon-button class="color-icon" [ngStyle]="{ 'background-color': color.color }" 
                 matTooltip="{{colorsList[i].toolTip}}" (click)="changecolor(colorsList[i].color)">
-                    <mat-icon *ngIf="colorsList[i].icon">done</mat-icon>
+                    
                 </button>
             </div>
         </div>
     </mat-menu>
-    <button mat-icon-button class="toolbar-icon" aria-label="image icon">
+    <button mat-icon-button class="toolbar-icon" aria-label="image icon" (click)="OpenImage()">
         <mat-icon class="material-icons-outlined" matTooltip="Add image">image</mat-icon>
     </button>
     <button mat-icon-button class="toolbar-icon" aria-label="archive icon">

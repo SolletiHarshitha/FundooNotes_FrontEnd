@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { getMatFormFieldMissingControlError } from '@angular/material/form-field';
-import { MatGridAvatarCssMatStyler } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
-import { MaterialModule } from '../../material/material.module';
 import { LabelServiceService } from 'src/app/Services/LabelService/label-service.service';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +26,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private labelService: LabelServiceService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private dataService: DataServiceService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,14 @@ export class DashboardComponent implements OnInit {
     this.email = JSON.parse(userData!).Email;
 
     this.GetLabels();
+
+    this.dataService.currentData
+    .subscribe((result:boolean)=>{
+      if(result){
+        this.GetLabels();
+        this.dataService.changeMessage(false);
+      }
+    })
   }
   
   LogOut(){
