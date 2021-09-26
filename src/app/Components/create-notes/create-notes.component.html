@@ -18,7 +18,7 @@
     <mat-card class="hiddenCard" *ngIf="show" [style.background-color]="noteColor" (click)="Color()">
         <form [formGroup]="CreateNoteForm">
             <mat-card-title class="header">
-                <input matInput placeholder="Title" formControlName="title" class="input" [ngStyle]="{'background':noteColor}">
+                <input matInput placeholder="Title" formControlName="title" class="input" [style.background-color]="noteColor">
                 <button mat-icon-button class="note -icon">
                     <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
                     <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
@@ -33,7 +33,7 @@
                         <app-note-icons [style.background-color]="noteColor"></app-note-icons>
                     </div>
                     <div class="button">
-                        <button mat-flat-button (click)="AddNote();show=!show">Close</button>
+                        <button mat-flat-button (click)="AddNote();show=!show" [style.background-color]="noteColor">Close</button>
                     </div>
                 </div>
             </mat-card-actions>

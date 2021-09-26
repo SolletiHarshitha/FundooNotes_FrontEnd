@@ -1,6 +1,6 @@
 <div class="updateNote" [ngStyle]="{'background-color':data.note.color}">
-    <mat-card class="noteCard" [ngStyle]="{'background-color':data.note.color}">
-            <mat-card-title class="header">
+    <div class="noteCard" [ngStyle]="{'background-color':data.note.color}">
+            <mat-card-title class="header" [ngStyle]="{'background-color':data.note.color}">
                 <input matInput placeholder="Title" class="input" [ngStyle]="{'background-color':data.note.color}" value="{{ data.title }}" [(ngModel)]="data.note.title">
                 <mat-icon class="material-icons-outlined" *ngIf="!isPin" style="color: rgb(80, 79, 79);" (click)="isPin=true">push_pin</mat-icon>
                 <mat-icon class="material-icons" *ngIf="isPin" style="color: rgb(80, 79, 79);" (click)="isPin=false">push_pin</mat-icon>
@@ -18,5 +18,5 @@
                     </div>
                 </div>
             </mat-card-actions>
-    </mat-card>
+        </div>
 </div>

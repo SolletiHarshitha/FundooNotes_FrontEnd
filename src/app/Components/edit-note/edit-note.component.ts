@@ -45,7 +45,8 @@ export class EditNoteComponent implements OnInit {
   }
 
   EditNote(){
-    this.noteService.EditNote(this.data)
+    console.log(this.data);
+    this.noteService.EditNote(this.data.note)
     .subscribe((result:any)=>{
       console.log(result);
       console.log(this.data);

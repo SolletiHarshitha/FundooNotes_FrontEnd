@@ -4,64 +4,9 @@
     </button>
     <mat-menu #reminder="matMenu" class="reminderMenu">
         <p class="reminderHeader">Reminder: </p>
-        <button mat-menu-item class="reminderOption"> 
-            <p>Later today 8:00PM</p>
+        <button mat-menu-item class="reminderOption" *ngFor="let reminder of reminders" (click)="AddReminder(notes,reminder)"> 
+            <p>{{ reminder.Remind }}</p>
         </button>
-        <button mat-menu-item>
-            <p>Tomorrow 8:00AM</p>
-        </button>
-        <button mat-menu-item>
-            <p>Next week, Mon,8:00AM</p>
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="datetime">
-            <mat-icon>access_time</mat-icon>
-            Pick date & time
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="place">
-            <mat-icon>place</mat-icon>
-            Pick place
-        </button>
-    </mat-menu>
-    <mat-menu #datetime="matMenu" class="dateTime" [overlapTrigger]="false">
-        <button mat-menu-item>
-            <mat-icon >keyboard_backspace</mat-icon>
-            Pick date & time
-        </button>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <input matInput [matDatepicker]="picker" placeholder="Select date">
-            <mat-datepicker-toggle matSuffix [for]="picker">
-              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker yPosition="below"></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="timePicker" appearance="fill" [matMenuTriggerFor]="time">
-            <input matInput placeholder="Select time">
-            <button matSuffix mat-icon-button>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
-        </mat-form-field>
-    </mat-menu>
-    <mat-menu #time="matMenu" opened="true" yPosition="below">
-        <button mat-menu-item>
-            <p>Morning 8:00AM</p>
-        </button>
-        <button mat-menu-item>
-            <p>Afternoon 1:00PM</p>
-        </button>
-        <button mat-menu-item>
-            <p>Evening 6:00PM</p>
-        </button>
-        <button mat-menu-item>
-            <p>Night 8:00PM</p>
-        </button>
-    </mat-menu>
-    <mat-menu #place="matMenu" [overlapTrigger]="false" yPosition="below" class="location">
-        <button mat-icon-button matTooltip="Go Back">
-            <mat-icon>keyboard_backspace</mat-icon> Pick a place
-        </button>
-        <mat-divider></mat-divider>
-        <input matInput placeholder="Choose a location">
-        <button mat-button style="float: right;">Save</button>
     </mat-menu>
     <button mat-icon-button class="toolbar-icon" aria-label="person_add icon" (click)="OpenCollaborator()">
         <mat-icon class="material-icons-outlined" matTooltip="Collaborator">person_add</mat-icon>
@@ -74,7 +19,7 @@
             <div class="row" *ngFor="let color of colorsList;let i=index">
                 <button mat-icon-button class="color-icon" [ngStyle]="{ 'background-color': color.color }" 
                 matTooltip="{{colorsList[i].toolTip}}" (click)="changecolor(colorsList[i].color)">
-                    
+                    <mat-icon *ngIf="colorsList[i].icon">done</mat-icon>
                 </button>
             </div>
         </div>

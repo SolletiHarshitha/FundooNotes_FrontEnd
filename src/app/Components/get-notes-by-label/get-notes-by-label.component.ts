@@ -35,8 +35,8 @@ export class GetNotesByLabelComponent implements OnInit {
   }
 
   getNotesByLabel(){
-    //alert(this.labels.labelName);
-    this.labelService.GetNotesByLabel(this.labels)
+    console.log(this.labels);
+    this.labelService.GetNotesByLabel(this.labels.labelId)
     .subscribe((result: any)=>{
       console.log(result);
       this.notes = result.data;

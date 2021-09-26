@@ -35,7 +35,7 @@ export class EditLabelComponent implements OnInit {
 
   AddLabel(labeldata:any){
     console.log(labeldata);
-    this.labelService.AddLabel(labeldata.labelName)
+    this.labelService.AddLabel(labeldata.name)
     .subscribe((result:any)=>{
       console.log(result);
       this.data.name="";
@@ -53,9 +53,9 @@ export class EditLabelComponent implements OnInit {
     this.ngOnInit();
   }
 
-  EditLabel(labeldata: any){
-    console.log(labeldata);
-    this.labelService.EditLabel(labeldata)
+  EditLabel(label:any,data: any){
+    console.log(label);
+    this.labelService.EditLabel(label.labelName, data.edit)
     .subscribe((result:any)=>{
       console.log(result);
       this.dataService.changeMessage(result.status);

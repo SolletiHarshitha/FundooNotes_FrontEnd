@@ -29,3 +29,28 @@ mat-icon{
 .toolbar-icon:hover{
     background-color: #dddddd;
 }
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 125px;
+}
+.row{
+    display: flex;
+    margin: 3px;
+}
+.color-icon{
+    width: 25px;
+    height: 25px;
+    mat-icon{
+        position: absolute;
+    }
+}
+
+.reminderOption{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

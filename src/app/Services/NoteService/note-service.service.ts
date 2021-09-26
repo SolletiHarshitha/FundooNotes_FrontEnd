@@ -79,12 +79,13 @@ export class NoteServiceService {
   }
  
   EditNote(data: any){
+    alert(data);
     const params = {
       Title : data.title,
       Description: data.description,
-      Notes: data.noteId
+      NoteId: data.noteId
     }
-    return this.httpService.put(`${environment.baseUrl}/api/Note/UpdateNote`,null, true, this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/Note/UpdateNote`,params, true, this.header);
   }
 
   MoveIntoTrash(noteId: number){
@@ -111,8 +112,9 @@ export class NoteServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/Note/UnPinNote?noteId=${noteId}`,null, true, this.header);
   }
   AddImage(noteId:any, file: any): Observable<any>{ 
+    console.log(file);
     const formData = new FormData();
-    formData.append('file',file,file.name);
+    formData.append('image',file,file);
     console.log(formData);
     return this.httpService.put(`${environment.baseUrl}/api/Note/AddImage?noteId=${noteId}`,formData, true, this.header);
   }

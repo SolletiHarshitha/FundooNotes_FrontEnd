@@ -11,10 +11,11 @@
         <div class="description">
             <mat-card-content (click)="OpenEditNote(note)">{{ note.description }}</mat-card-content>
         </div>
-        <div class="reminder" *ngIf="note.reminder!=null">
+        <div class="reminder" *ngIf="note.remainder!=null">
+            <mat-chip class="reminderchip">
             <mat-icon>schedule</mat-icon>
             <mat-label>{{note.remainder}}</mat-label>
-            <mat-icon (click)="DeleteReminder(note)">close</mat-icon>
+            <mat-icon (click)="DeleteReminder(note)">close</mat-icon> </mat-chip>
         </div>
         <div class="icons">
             <app-get-note-icons [notes]=note></app-get-note-icons>

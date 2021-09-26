@@ -12,7 +12,7 @@
         </div>
         <div>
             <button mat-icon-button>
-                <mat-icon *ngIf="data.name" (click)="AddLabel(data)" matTooltip="Create label">done</mat-icon>
+                <mat-icon (click)="AddLabel(data)" matTooltip="Create label">done</mat-icon>
             </button> 
         </div>
     </div>
@@ -25,12 +25,15 @@
         
         
          <div class="text" *ngIf="!update">{{ label.labelName }}</div> 
-         <input matInput *ngIf="update" placeholder="Title" class="input"  value="{{ label.labelName }}">
+         <div>
+            <input matInput *ngIf="update" placeholder="Title" class="input" value="{{ label.labelName }}" [(ngModel)]="data.edit">
+         </div>
+         
         </div>
     <div>
         <button mat-icon-button (click)="update=!update">
             <mat-icon *ngIf="!update" matTooltip="Rename label" >edit</mat-icon>
-            <mat-icon *ngIf="update" (click)="EditLabel(label)">done</mat-icon>
+            <mat-icon *ngIf="data.edit" (click)="EditLabel(label,data)">done</mat-icon>
         </button>
     </div>
         

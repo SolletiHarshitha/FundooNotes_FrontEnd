@@ -26,3 +26,11 @@
     right: 10px;
     cursor: pointer;
 }
+
+.reminderChip{
+    display: flex;
+    align-items: center;
+    mat-icon{
+        position: absolute;
+    }
+}

@@ -123,6 +123,13 @@ mat-sidenav-content{
 .navigate-icon :visited{
   background-color: #feefc3;
 }
+.mat-sidenav{
+  position: relative !important;
+  height: 100%;
+  overflow: auto;
+  float: left;
+}
+
 /*::ng-deep .mat-sidenav-container :hover{
   //width: 300px;
   //background-color: #f4f4f4;

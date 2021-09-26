@@ -19,7 +19,18 @@ export class GetNoteIconsComponent implements OnInit {
   file!: File;
   image:any;
 
-  
+  reminders: any = [] = [
+    {
+      "Remind":"Later Today 8:00PM"
+    },
+    {
+      "Remind":"Tomorrow 8:00AM"
+    },
+    {
+      "Remind":"Next Week, Mon, 8:00AM"
+    }
+  ]
+
   noteColor: any = "white";
   colorsList: any = [] = [
     {
@@ -32,7 +43,7 @@ export class GetNoteIconsComponent implements OnInit {
       "color" : "rgb(223, 158, 39)", "toolTip": "orange", "icon" : false
     },
     {
-      "color" : "rgb(230, 230, 91);", "toolTip": "yellow", "icon" : false
+      "color" : "rgb(230, 230, 91)", "toolTip": "yellow", "icon" : false
     },
     {
       "color" : "rgb(105, 202, 105)", "toolTip": "green", "icon" : false
@@ -68,6 +79,7 @@ export class GetNoteIconsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.archive= this.notes.archive
     //this.getLabel();
     this.dataService.currentData
     .subscribe((result: any)=>{
@@ -87,7 +99,9 @@ export class GetNoteIconsComponent implements OnInit {
         this.snackBar.open(`${result.message}`, '', {
           verticalPosition:"bottom",
           horizontalPosition:"left",
-          duration:5000});
+          duration:5000
+        });
+        this.dataService.changeMessage(result.status);
       })
     }
     else{
@@ -97,7 +111,9 @@ export class GetNoteIconsComponent implements OnInit {
         this.snackBar.open(`${result.message}`, '', {
           verticalPosition:"bottom",
           horizontalPosition:"left",
-          duration:5000});
+          duration:5000
+        });
+        this.dataService.changeMessage(result.status);
       })
     }
   }
@@ -128,7 +144,9 @@ export class GetNoteIconsComponent implements OnInit {
       this.snackBar.open(`${result.message}`, '', {
         verticalPosition:"bottom",
         horizontalPosition:"left",
-        duration:5000});
+        duration:5000
+      });
+      this.dataService.changeMessage(result.status);
     })
   }
 
@@ -144,4 +162,18 @@ export class GetNoteIconsComponent implements OnInit {
     });
   }
 
+  AddReminder(note: any, reminder: any){
+    console.log(note);
+      console.log(reminder);
+    this.noteService.AddReminder(note.noteId,reminder.Remind)
+    .subscribe((result:any)=>{
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:5000
+      });
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
 }
