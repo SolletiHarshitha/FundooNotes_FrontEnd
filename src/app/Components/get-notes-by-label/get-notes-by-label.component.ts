@@ -97,4 +97,19 @@ export class GetNotesByLabelComponent implements OnInit {
     })
     this.ngOnInit();
   }
+
+  RemoveImage(note:any){
+    console.log(note.noteId);
+    this.noteService.RemoveImage(note.noteId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:5000
+      });
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
 }

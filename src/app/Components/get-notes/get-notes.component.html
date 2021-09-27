@@ -1,8 +1,11 @@
 <div class="labelName">PINNED</div>
-<div class="noteContainer">
+<div class="noteContainer" (mouseover)="show=true">
     <mat-card class="noteCard" *ngFor="let note of pinNotes" [ngStyle]="{'background-color': note.color}">
         <mat-icon class="pinIcon" *ngIf="note.pin" (click)="unpinNote(note.noteId)">push_pin</mat-icon>
         <img src="{{note.image}}" alt="" (click)="OpenEditNote(note)">
+        <button mat-icon-button class="delete_icon" *ngIf="note.image" (click)="RemoveImage(note)">
+            <mat-icon *ngIf="note.image" >delete_outline</mat-icon>
+        </button>
         <div class="title" (click)="OpenEditNote(note)">
             <mat-card-title>
                 <p>{{ note.title }}</p>
@@ -12,13 +15,15 @@
             <mat-card-content>{{ note.description }}</mat-card-content>
         </div>
         <div class="reminder" *ngIf="note.remainder!=null">
-            <mat-chip class="reminderchip">
-            <mat-icon>schedule</mat-icon>
-            <mat-label>{{note.remainder}}</mat-label>
-            <mat-icon (click)="DeleteReminder(note)">close</mat-icon> </mat-chip>
+            <mat-chip-list>
+                <mat-chip class="reminderchip">
+                    <mat-icon>schedule</mat-icon>
+                    <mat-label>{{note.remainder}}</mat-label>
+                    <mat-icon (click)="DeleteReminder(note)">close</mat-icon> </mat-chip>
+            </mat-chip-list>  
         </div>
         <div class="icons">
-            <app-get-note-icons [notes]=note></app-get-note-icons>
+            <app-get-note-icons [notes]=note (mouseleave)="show=false"></app-get-note-icons>
         </div>
     </mat-card>
 </div>
@@ -28,6 +33,9 @@
     <mat-card class="noteCard" *ngFor="let note of unpinNotes" [ngStyle]="{'background-color': note.color}">
         <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin" (click)="pinNote(note.noteId)">push_pin</mat-icon>
         <img src="{{note.image}}" alt="" (click)="OpenEditNote(note)">
+        <button mat-icon-button class="delete_icon" *ngIf="note.image" (click)="RemoveImage(note)">
+            <mat-icon *ngIf="note.image" >delete_outline</mat-icon>
+        </button>
         <div class="title" (click)="OpenEditNote(note)">
             <mat-card-title>
                 <p>{{ note.title }}</p>
@@ -36,10 +44,13 @@
         <div class="description" (click)="OpenEditNote(note)">
             <mat-card-content>{{ note.description }}</mat-card-content>
         </div>
-        <div class="reminder" *ngIf="note.reminder!=null">
-            <mat-icon>schedule</mat-icon>
-            <mat-label>{{note.remainder}}</mat-label>
-            <mat-icon (click)="DeleteReminder(note)">close</mat-icon>
+        <div class="reminder" *ngIf="note.remainder!=null">
+            <mat-chip-list>
+                <mat-chip class="reminderchip">
+                    <mat-icon>schedule</mat-icon>
+                    <mat-label>{{note.remainder}}</mat-label>
+                    <mat-icon (click)="DeleteReminder(note)">close</mat-icon> </mat-chip>
+            </mat-chip-list>  
         </div>
         <div class="icons">
             <app-get-note-icons [notes]=note></app-get-note-icons>

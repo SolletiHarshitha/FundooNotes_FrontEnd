@@ -25,15 +25,15 @@
         
         
          <div class="text" *ngIf="!update">{{ label.labelName }}</div> 
-         <div>
-            <input matInput *ngIf="update" placeholder="Title" class="input" value="{{ label.labelName }}" [(ngModel)]="data.edit">
-         </div>
+         
+         <input matInput *ngIf="update" placeholder="Title" class="input" value="{{ label.labelName }}" [(ngModel)]="data.edit">
+        
          
         </div>
     <div>
         <button mat-icon-button (click)="update=!update">
             <mat-icon *ngIf="!update" matTooltip="Rename label" >edit</mat-icon>
-            <mat-icon *ngIf="data.edit" (click)="EditLabel(label,data)">done</mat-icon>
+            <mat-icon *ngIf="update" (click)="EditLabel(label,data)">done</mat-icon>
         </button>
     </div>
         

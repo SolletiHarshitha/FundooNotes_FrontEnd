@@ -42,13 +42,18 @@
             <p>Delete Note</p>
         </button>
     </mat-menu>  
-    <mat-menu #label="matMenu" opened="true" class="label-subMenu" yPosition="below">
+    <mat-menu #label="matMenu" opened="true" yPosition="below">
+        <div class="label-subMenu">
         <h3>Label note</h3>
         <div class="input">
-            <input matInput placeholder="Enter label name" class="input">
+            <input matInput placeholder="Enter label name">
             <mat-icon>search</mat-icon>
         </div>
-        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+        <div class="labelslist" *ngFor= "let label of labels">
+            <mat-checkbox class="example-margin">{{ label.labelName }}</mat-checkbox>
+        </div>
+    </div>
+        
     </mat-menu> 
 </div>
 

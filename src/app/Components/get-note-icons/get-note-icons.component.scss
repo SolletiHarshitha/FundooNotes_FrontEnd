@@ -54,3 +54,18 @@ mat-icon{
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.input{
+    display: flex;
+    flex-direction: row;
+    input{
+        border: none;
+        outline: none;
+        border-radius: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+.label-subMenu{
+    padding-left: 10px;
+}

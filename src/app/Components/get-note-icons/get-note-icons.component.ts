@@ -6,6 +6,8 @@ import { AddCollaboratorComponent } from '../add-collaborator/add-collaborator.c
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataServiceService } from 'src/app/Services/DataService/data-service.service';
 import { AddImageComponent } from '../add-image/add-image.component';
+import { LabelServiceService } from 'src/app/Services/LabelService/label-service.service';
+
 @Component({
   selector: 'app-get-note-icons',
   templateUrl: './get-note-icons.component.html',
@@ -18,6 +20,7 @@ export class GetNoteIconsComponent implements OnInit {
   remindMe = false;
   file!: File;
   image:any;
+  labels:any;
 
   reminders: any = [] = [
     {
@@ -75,12 +78,13 @@ export class GetNoteIconsComponent implements OnInit {
     private noteService:NoteServiceService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private dataService: DataServiceService
+    private dataService: DataServiceService,
+    private labelService: LabelServiceService
   ) { }
 
   ngOnInit(): void {
     this.archive= this.notes.archive
-    //this.getLabel();
+    this.getLabel();
     this.dataService.currentData
     .subscribe((result: any)=>{
       if(result){
@@ -175,5 +179,14 @@ export class GetNoteIconsComponent implements OnInit {
       this.dataService.changeMessage(result.status);
     })
     this.ngOnInit();
+  }
+
+  getLabel(){
+    this.labelService.GetLabels()
+    .subscribe((result:any)=>{
+      this.labels = result.data;
+      console.log(this.labels);
+      this.dataService.changeMessage(result.status);
+    })
   }
 }

@@ -59,7 +59,7 @@ export class GetNotesComponent implements OnInit {
   OpenEditNote(note:any): void{
     let dialogRef = this.dialog.open(EditNoteComponent, {
       height: 'fit-content',
-      width: '50%',
+      width: 'fit-content',
       minHeight: '50%',
       data: {note}
     });
@@ -107,6 +107,20 @@ export class GetNotesComponent implements OnInit {
 
   DeleteReminder(note: any){
     this.noteService.DeleteReminder(note.noteId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        verticalPosition:"bottom",
+        horizontalPosition:"left",
+        duration:5000
+      });
+      this.dataService.changeMessage(result.status);
+    })
+    this.ngOnInit();
+  }
+  RemoveImage(note:any){
+    console.log(note.noteId);
+    this.noteService.RemoveImage(note.noteId)
     .subscribe((result:any)=>{
       console.log(result);
       this.snackBar.open(`${result.message}`, '', {

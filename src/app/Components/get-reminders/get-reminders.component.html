@@ -3,6 +3,9 @@
         <mat-icon class="material-icons-outlined pinIcon" *ngIf="!note.pin" (click)="pinNote(note.noteId)">push_pin</mat-icon>
         <mat-icon class="pinIcon" *ngIf="note.pin" (click)="unpinNote(note.noteId)">push_pin</mat-icon>
         <img src="{{note.image}}" alt="" (click)="OpenEditNote(note)">
+        <button mat-icon-button class="delete_icon" *ngIf="note.image" (click)="RemoveImage(note)">
+            <mat-icon *ngIf="note.image" >delete_outline</mat-icon>
+        </button>
         <div class="title">
             <mat-card-title (click)="OpenEditNote(note)">
                 <p>{{ note.title }}</p>
@@ -12,10 +15,12 @@
             <mat-card-content (click)="OpenEditNote(note)">{{ note.description }}</mat-card-content>
         </div>
         <div class="reminder" *ngIf="note.remainder!=null">
-            <mat-chip class="reminderchip">
-            <mat-icon>schedule</mat-icon>
-            <mat-label>{{note.remainder}}</mat-label>
-            <mat-icon (click)="DeleteReminder(note)">close</mat-icon> </mat-chip>
+            <mat-chip-list>
+                <mat-chip class="reminderchip">
+                    <mat-icon>schedule</mat-icon>
+                    <mat-label>{{note.remainder}}</mat-label>
+                    <mat-icon (click)="DeleteReminder(note)">close</mat-icon> </mat-chip>
+            </mat-chip-list>  
         </div>
         <div class="icons">
             <app-get-note-icons [notes]=note></app-get-note-icons>

@@ -119,6 +119,7 @@ export class NoteServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/Note/AddImage?noteId=${noteId}`,formData, true, this.header);
   }
   RemoveImage(noteId:any){
-    return this.httpService.put(`${environment.baseUrl}/api/Note/RemoveImage?noteId=${noteId}`,null, true, this.header);
+    console.log(noteId);
+    return this.httpService.delete(`${environment.baseUrl}/api/Note/RemoveImage?noteId=${noteId}`, true, this.header);
   }
 }
